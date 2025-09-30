@@ -367,15 +367,25 @@ header {
   transition: var(--transition);
 }
 
-.portfolio-category {
+.portfolio-location {
   font-size: 1rem;
+  margin-bottom: 10px;
+  opacity: 0.95;
+  font-weight: 500;
+  transform: translateY(30px);
+  transition: var(--transition);
+}
+
+.portfolio-category {
+  font-size: 0.95rem;
   margin-bottom: 25px;
-  opacity: 0.9;
+  opacity: 0.85;
   transform: translateY(30px);
   transition: var(--transition);
 }
 
 .portfolio-item:hover .portfolio-title,
+.portfolio-item:hover .portfolio-location,
 .portfolio-item:hover .portfolio-category,
 .portfolio-item:hover .portfolio-tags {
   transform: translateY(0);

@@ -8,7 +8,10 @@
     "description": "부산 민주공원 인터랙티브 전시 시스템",
     "year": "2024",
     "client": "부산 민주공원",
-    "link": "/project/2024_Busan_Democracy"
+    "location": "부산, 대한민국",
+    "country": "KR",
+    "link": "/project/2024_Busan_Democracy",
+    "lastmod": "2024-11-20"
   },
   {
     "id": "2024_Jecheon_Jummal",
@@ -19,7 +22,10 @@
     "description": "제천 점말동굴 인터랙티브 전시",
     "year": "2024",
     "client": "제천시",
-    "link": "/project/2024_Jecheon_Jummal"
+    "location": "제천, 대한민국",
+    "country": "KR",
+    "link": "/project/2024_Jecheon_Jummal",
+    "lastmod": "2024-10-15"
   },
   {
     "id": "2024_Wonju_ScienceMuseum",
@@ -30,7 +36,10 @@
     "description": "원주 과학관 인터랙티브 전시",
     "year": "2024",
     "client": "원주시",
-    "link": "/project/2024_Wonju_ScienceMuseum"
+    "location": "원주, 대한민국",
+    "country": "KR",
+    "link": "/project/2024_Wonju_ScienceMuseum",
+    "lastmod": "2024-09-30"
   },
   {
     "id": "2025_Gyeongju_Munmu",
@@ -41,7 +50,10 @@
     "description": "경주 문무대왕 역사 전시 시스템",
     "year": "2025",
     "client": "경주시",
-    "link": "/project/2025_Gyeongju_Munmu"
+    "location": "경주, 대한민국",
+    "country": "KR",
+    "link": "/project/2025_Gyeongju_Munmu",
+    "lastmod": "2025-01-25"
   },
   {
     "id": "2025_Wonju_Sogeumsan",
@@ -52,6 +64,9 @@
     "description": "원주 소금산 키오스크 및 전시 시스템",
     "year": "2025",
     "client": "원주시",
-    "link": "/project/2025_Wonju_Sogeumsan"
+    "location": "원주, 대한민국",
+    "country": "KR",
+    "link": "/project/2025_Wonju_Sogeumsan",
+    "lastmod": "2025-01-20"
   }
 ]

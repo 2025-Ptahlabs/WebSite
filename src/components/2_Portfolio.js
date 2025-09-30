@@ -9,6 +9,7 @@ const Portfolio = () => {
   // JSON 데이터에서 모든 고유 태그 추출
   const allTags = [...new Set(projectsData.flatMap(project => project.tags))];
 
+
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
   };
@@ -80,6 +81,7 @@ const Portfolio = () => {
               />
               <div className="portfolio-overlay">
                 <h3 className="portfolio-title">{item.title}</h3>
+                <p className="portfolio-location">{item.location}</p>
                 <p className="portfolio-category">{item.category}</p>
                 <div className="portfolio-tags">
                   {item.tags.map(tag => (

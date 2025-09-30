@@ -7,6 +7,7 @@ const ProjectDetail = () => {
   const navigate = useNavigate();
   const project = projectsData.find(p => p.id === projectId);
 
+
   if (!project) {
     return (
       <div className="project-detail-container">
@@ -33,6 +34,9 @@ const ProjectDetail = () => {
           <div className="project-detail-meta">
             <span className="project-meta-item">
               <strong>년도:</strong> {project.year}
+            </span>
+            <span className="project-meta-item">
+              <strong>위치:</strong> {project.location}
             </span>
             <span className="project-meta-item">
               <strong>클라이언트:</strong> {project.client}
