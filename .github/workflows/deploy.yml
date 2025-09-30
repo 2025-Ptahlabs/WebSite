@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages  # 워크플로우 이름
 
 on:                                 # 언제 이 워크플로우를 실행할지 설정
   push:                             # git push할 때
-    branches: [ before-confirm ]    # before-confirm 브랜치에 푸시할 때만 실행
+    branches: [ main ]              # main 브랜치에 푸시할 때만 실행
 
 permissions:                        # GitHub Actions bot 권한 설정
   contents: write                   # 저장소에 쓰기 권한 부여

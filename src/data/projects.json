@@ -1,0 +1,57 @@
+[
+  {
+    "id": "2024_Busan_Democracy",
+    "title": "부산 민주공원 전시",
+    "category": "전시",
+    "tags": ["exhibition", "interactive", "history"],
+    "image": "./images/portfolio/2024_Busan_Democracy/main.jpg",
+    "description": "부산 민주공원 인터랙티브 전시 시스템",
+    "year": "2024",
+    "client": "부산 민주공원",
+    "link": "/project/2024_Busan_Democracy"
+  },
+  {
+    "id": "2024_Jecheon_Jummal",
+    "title": "제천 점말동굴 전시",
+    "category": "전시",
+    "tags": ["exhibition", "media-art", "cave"],
+    "image": "./images/portfolio/2024_Jecheon_Jummal/main.jpg",
+    "description": "제천 점말동굴 인터랙티브 전시",
+    "year": "2024",
+    "client": "제천시",
+    "link": "/project/2024_Jecheon_Jummal"
+  },
+  {
+    "id": "2024_Wonju_ScienceMuseum",
+    "title": "원주 과학관",
+    "category": "과학전시",
+    "tags": ["exhibition", "science", "interactive"],
+    "image": "./images/portfolio/2024_Wonju_ScienceMuseum/main.jpg",
+    "description": "원주 과학관 인터랙티브 전시",
+    "year": "2024",
+    "client": "원주시",
+    "link": "/project/2024_Wonju_ScienceMuseum"
+  },
+  {
+    "id": "2025_Gyeongju_Munmu",
+    "title": "경주 문무대왕 전시",
+    "category": "전시",
+    "tags": ["exhibition", "history", "interactive"],
+    "image": "./images/portfolio/2025_Gyeongju_Munmu/KakaoTalk_20250803_201124896.png",
+    "description": "경주 문무대왕 역사 전시 시스템",
+    "year": "2025",
+    "client": "경주시",
+    "link": "/project/2025_Gyeongju_Munmu"
+  },
+  {
+    "id": "2025_Wonju_Sogeumsan",
+    "title": "원주 소금산 전시",
+    "category": "전시",
+    "tags": ["exhibition", "nature", "kiosk"],
+    "image": "./images/portfolio/2025_Wonju_Sogeumsan/Kiosk.jpg",
+    "description": "원주 소금산 키오스크 및 전시 시스템",
+    "year": "2025",
+    "client": "원주시",
+    "link": "/project/2025_Wonju_Sogeumsan"
+  }
+]

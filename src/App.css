@@ -200,7 +200,7 @@ header {
 /* 배너 섹션 */
 .hero {
   height: 100vh;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color) 60%, var(--accent-color) 100%);
   display: flex;
   align-items: center;
   color: var(--light-color);
@@ -376,8 +376,134 @@ header {
 }
 
 .portfolio-item:hover .portfolio-title,
-.portfolio-item:hover .portfolio-category {
+.portfolio-item:hover .portfolio-category,
+.portfolio-item:hover .portfolio-tags {
   transform: translateY(0);
+}
+
+.portfolio-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  justify-content: center;
+  transform: translateY(30px);
+  transition: var(--transition);
+}
+
+.portfolio-tag {
+  font-size: 0.85rem;
+  padding: 5px 12px;
+  background: rgba(250, 249, 246, 0.2);
+  border: 1px solid rgba(250, 249, 246, 0.4);
+  border-radius: 15px;
+  color: var(--light-color);
+  font-weight: 500;
+}
+
+/* Project Detail 페이지 */
+.project-detail-container {
+  min-height: 100vh;
+  padding: 140px 0 80px;
+  background: var(--light-color);
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  border-radius: 50px;
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 40px;
+}
+
+.btn-back:hover {
+  background: var(--primary-color);
+  color: var(--light-color);
+  border-color: var(--primary-color);
+  transform: translateX(-5px);
+}
+
+.project-detail-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.project-detail-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 30px;
+  color: var(--primary-color);
+  font-weight: 800;
+}
+
+.project-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 20px;
+  padding: 30px;
+  background: linear-gradient(135deg, var(--light-color) 0%, rgba(194, 184, 163, 0.15) 100%);
+  border-radius: 15px;
+  border: 1px solid var(--accent-color);
+}
+
+.project-meta-item {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.project-meta-item strong {
+  color: var(--primary-color);
+  margin-right: 8px;
+}
+
+.project-detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.project-detail-tag {
+  padding: 8px 16px;
+  background: var(--accent-color);
+  color: var(--light-color);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.project-detail-description {
+  margin-bottom: 50px;
+  padding: 40px;
+  background: linear-gradient(135deg, var(--light-color) 0%, rgba(194, 184, 163, 0.15) 100%);
+  border-radius: 15px;
+  border: 1px solid var(--accent-color);
+}
+
+.project-detail-description p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+.project-detail-image {
+  margin-bottom: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.project-detail-image img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* CI 섹션 */

@@ -1,60 +1,25 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import projectsData from '../data/projects.json';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const navigate = useNavigate();
 
-  const portfolioItems = [
-    {
-      id: 1,
-      category: 'exhibition',
-      title: '디지털 아트 전시',
-      image: '/api/placeholder/600/400',
-      alt: '전시 프로젝트 1'
-    },
-    {
-      id: 2,
-      category: 'media-art',
-      title: '인터랙티브 미디어',
-      image: '/api/placeholder/600/400',
-      alt: '미디어아트 프로젝트 1'
-    },
-    {
-      id: 3,
-      category: 'solution',
-      title: 'AR 전시 솔루션',
-      image: '/api/placeholder/600/400',
-      alt: '솔루션 프로젝트 1'
-    },
-    {
-      id: 4,
-      category: 'exhibition',
-      title: '공간 매핑 프로젝션',
-      image: '/api/placeholder/600/400',
-      alt: '전시 프로젝트 2'
-    },
-    {
-      id: 5,
-      category: 'media-art',
-      title: '사운드 아트',
-      image: '/api/placeholder/600/400',
-      alt: '미디어아트 프로젝트 2'
-    },
-    {
-      id: 6,
-      category: 'solution',
-      title: '몰입형 VR 체험',
-      image: '/api/placeholder/600/400',
-      alt: '솔루션 프로젝트 2'
-    }
-  ];
+  // JSON 데이터에서 모든 고유 태그 추출
+  const allTags = [...new Set(projectsData.flatMap(project => project.tags))];
 
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
   };
 
-  const filteredItems = activeFilter === 'all' 
-    ? portfolioItems 
-    : portfolioItems.filter(item => item.category === activeFilter);
+  const handleProjectClick = (link) => {
+    navigate(link);
+  };
+
+  const filteredItems = activeFilter === 'all'
+    ? projectsData
+    : projectsData.filter(project => project.tags.includes(activeFilter));
 
   return (
     <section id="portfolio" className="portfolio">
@@ -62,35 +27,31 @@ const Portfolio = () => {
         <h2 className="section-title">포트폴리오</h2>
 
         <div className="portfolio-filter">
-          <button 
+          <button
             className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
             onClick={() => handleFilterChange('all')}
           >
             전체
           </button>
-          <button 
-            className={`filter-btn ${activeFilter === 'exhibition' ? 'active' : ''}`}
-            onClick={() => handleFilterChange('exhibition')}
-          >
-            전시
-          </button>
-          <button 
-            className={`filter-btn ${activeFilter === 'media-art' ? 'active' : ''}`}
-            onClick={() => handleFilterChange('media-art')}
-          >
-            미디어아트
-          </button>
-          <button 
-            className={`filter-btn ${activeFilter === 'solution' ? 'active' : ''}`}
-            onClick={() => handleFilterChange('solution')}
-          >
-            솔루션
-          </button>
+          {allTags.map(tag => (
+            <button
+              key={tag}
+              className={`filter-btn ${activeFilter === tag ? 'active' : ''}`}
+              onClick={() => handleFilterChange(tag)}
+            >
+              {tag}
+            </button>
+          ))}
         </div>
 
         <div className="portfolio-grid">
           {filteredItems.map((item, index) => (
-            <div key={item.id} className="portfolio-item" data-category={item.category}>
+            <div
+              key={item.id}
+              className="portfolio-item"
+              onClick={() => handleProjectClick(item.link)}
+              style={{ cursor: 'pointer' }}
+            >
               {index === 0 && (
                 <div
                   className="portfolio-placeholder"
@@ -114,13 +75,17 @@ const Portfolio = () => {
               )}
               <img
                 src={item.image}
-                alt={item.alt}
+                alt={item.title}
                 className="portfolio-image"
               />
               <div className="portfolio-overlay">
                 <h3 className="portfolio-title">{item.title}</h3>
-                <p className="portfolio-category">{item.category === 'media-art' ? '미디어아트' : item.category === 'exhibition' ? '전시' : '솔루션'}</p>
-                {/* <a href="#" className="btn">자세히 보기</a> */}
+                <p className="portfolio-category">{item.category}</p>
+                <div className="portfolio-tags">
+                  {item.tags.map(tag => (
+                    <span key={tag} className="portfolio-tag">#{tag}</span>
+                  ))}
+                </div>
                 <button className="btn">자세히 보기</button>
               </div>
             </div>
