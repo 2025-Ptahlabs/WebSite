@@ -38,8 +38,8 @@ const CI = () => {
               <span className="vertical-line"></span> Color & Style
             </h3>
             <p className="ci-description">
-              블랙 & 화이트 모노톤은 디지털 환경의 중립성과 확장성을 반영하며,
-              다양한 배경 위에서도 유연하게 적용됩니다.
+              자연친화적인 카키 그린 컬러는 지속가능성과 조화로운 기술을 상징하며,
+              다양한 환경에서도 안정감과 신뢰감을 전달합니다.
             </p>
             <p className="ci-description">
               미니멀한 디자인은 예술과 기술의 조화, 그리고 간결한 인터페이스를
@@ -47,10 +47,11 @@ const CI = () => {
             </p>
 
             <div className="color-palette">
-              <div className="color-sample black"></div>
-              <div className="color-sample white"></div>
               <div className="color-sample primary"></div>
+              <div className="color-sample accent"></div>
               <div className="color-sample secondary"></div>
+              <div className="color-sample light"></div>
+              <div className="color-sample text"></div>
             </div>
           </div>
 
@@ -76,7 +77,8 @@ const CI = () => {
               <span className="vertical-line"></span> Vision
             </h3>
             <p className="ci-description vision-text">
-              기술을 기반으로, 예술을 매개로, 사람과 공간을 연결합니다.
+              기술을 기반으로, 예술을 매개로, 사람과 공간을 연결하며,
+              사용자 경험을 우선시하고 관객과의 소통을 통해 새로운 경험을 창조합니다.
             </p>
           </div>
         </div>
