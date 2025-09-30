@@ -9,7 +9,7 @@ const today = new Date().toISOString().split('T')[0];
 
 // Sitemap XML 생성
 const generateSitemap = () => {
-  const baseUrl = 'https://ptahlabs.com';
+  const baseUrl = 'https://ptahlabs.co.kr';
 
   let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

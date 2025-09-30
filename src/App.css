@@ -21,6 +21,17 @@
   font-family: "Inter", "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* 텍스트 선택 색상 */
+::selection {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+::-moz-selection {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
 body {
   background: var(--light-color);
   color: var(--text-color);

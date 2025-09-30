@@ -13,7 +13,7 @@
 
 ### 2. 설정 내용
 - **언어 설정**: `<html lang="ko">`
-- **정규 URL**: `<link rel="canonical" href="https://ptahlabs.com/" />`
+- **정규 URL**: `<link rel="canonical" href="https://ptahlabs.co.kr/" />`
 - **키워드**: 미디어아트, 인터랙티브 전시, 디지털 전시, XR, AR, VR 등
 - **소셜 미디어 최적화**: Open Graph, Twitter Card 메타 태그
 
@@ -29,7 +29,7 @@
 
 #### 2단계: 속성 추가
 1. "속성 추가" 클릭
-2. "URL 접두어" 선택: `https://ptahlabs.com` 입력
+2. "URL 접두어" 선택: `https://ptahlabs.co.kr` 입력
 
 #### 3단계: 소유권 확인
 **방법 1: HTML 파일 업로드**
@@ -47,7 +47,7 @@
 
 #### 4단계: Sitemap 제출
 1. 좌측 메뉴에서 "Sitemaps" 클릭
-2. 새 사이트맵 추가: `https://ptahlabs.com/sitemap.xml`
+2. 새 사이트맵 추가: `https://ptahlabs.co.kr/sitemap.xml`
 3. "제출" 클릭
 
 ### 2. 네이버 서치 어드바이저 등록
@@ -58,7 +58,7 @@
 
 #### 2단계: 사이트 등록
 1. "웹마스터 도구" 클릭
-2. 사이트 URL 입력: `https://ptahlabs.com`
+2. 사이트 URL 입력: `https://ptahlabs.co.kr`
 3. "추가" 클릭
 
 #### 3단계: 소유권 확인
@@ -73,7 +73,7 @@
 
 #### 4단계: Sitemap 제출
 1. 좌측 메뉴에서 "요청" > "사이트맵 제출" 클릭
-2. 사이트맵 URL 입력: `https://ptahlabs.com/sitemap.xml`
+2. 사이트맵 URL 입력: `https://ptahlabs.co.kr/sitemap.xml`
 3. "확인" 클릭
 
 #### 5단계: RSS 제출 (선택사항)
@@ -97,13 +97,13 @@
 - [ ] Google Search Console에 사이트 등록
 - [ ] 네이버 서치 어드바이저에 사이트 등록
 - [ ] Sitemap 제출 (Google, 네이버)
-- [ ] robots.txt 접근 확인: `https://ptahlabs.com/robots.txt`
-- [ ] sitemap.xml 접근 확인: `https://ptahlabs.com/sitemap.xml`
+- [ ] robots.txt 접근 확인: `https://ptahlabs.co.kr/robots.txt`
+- [ ] sitemap.xml 접근 확인: `https://ptahlabs.co.kr/sitemap.xml`
 
 ### 1주일 후
 - [ ] Google Search Console에서 색인 생성 상태 확인
 - [ ] 네이버 서치 어드바이저에서 수집 현황 확인
-- [ ] "site:ptahlabs.com" 검색으로 구글 색인 확인
+- [ ] "site:ptahlabs.co.kr" 검색으로 구글 색인 확인
 - [ ] 네이버에서 "프타랩스" 검색으로 노출 확인
 
 ### 1개월 후
@@ -210,7 +210,7 @@
 ### 새 프로젝트 추가 시
 ```xml
 <url>
-  <loc>https://ptahlabs.com/#/project/프로젝트ID</loc>
+  <loc>https://ptahlabs.co.kr/#/project/프로젝트ID</loc>
   <lastmod>YYYY-MM-DD</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>

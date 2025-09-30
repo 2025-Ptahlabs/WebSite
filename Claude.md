@@ -321,7 +321,7 @@ Sitemap은 자동으로 업데이트됩니다.
 ## 🐛 알려진 이슈
 
 ### HashRouter 사용
-- URL에 `#` 포함 (예: `https://ptahlabs.com/#/project/xxx`)
+- URL에 `#` 포함 (예: `https://ptahlabs.co.kr/#/project/xxx`)
 - SEO에 약간 불리하지만, GitHub Pages에서 가장 안정적
 
 ### 대안
