@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://ptahlabs.com/sitemap.xml
+Sitemap: https://ptahlabs.co.kr/sitemap.xml
