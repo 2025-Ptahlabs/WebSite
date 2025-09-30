@@ -53,42 +53,18 @@ const Portfolio = () => {
               onClick={() => handleProjectClick(item.link)}
               style={{ cursor: 'pointer' }}
             >
-              {index === 0 && (
-                <div
-                  className="portfolio-placeholder"
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: '#888',
-                    fontWeight: 300,
-                    fontSize: '1.2rem',
-                    zIndex: 1,
-                  }}
-                >
-                  PTAH LABS<br />Exhibition Sample
-                </div>
-              )}
               <img
-                src={item.image}
+                src={item.thumbnail}
                 alt={item.title}
                 className="portfolio-image"
               />
               <div className="portfolio-overlay">
                 <h3 className="portfolio-title">{item.title}</h3>
-                <p className="portfolio-location">{item.location}</p>
-                <p className="portfolio-category">{item.category}</p>
                 <div className="portfolio-tags">
                   {item.tags.map(tag => (
                     <span key={tag} className="portfolio-tag">#{tag}</span>
                   ))}
                 </div>
-                <button className="btn">자세히 보기</button>
               </div>
             </div>
           ))}

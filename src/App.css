@@ -172,10 +172,10 @@ header {
 }
 
 .nav-link {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   font-weight: 500;
   transition: var(--transition);
-  padding: 8px 16px;
+  padding: 12px 24px;
   border-radius: 25px;
   position: relative;
 }
@@ -514,17 +514,184 @@ header {
   color: var(--text-color);
 }
 
-.project-detail-image {
+.project-detail-description h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.detailed-content {
+  margin-top: 30px;
+}
+
+.detailed-content p {
+  margin-bottom: 15px;
+}
+
+.project-detail-gallery {
   margin-bottom: 40px;
+}
+
+.gallery-main {
+  position: relative;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: var(--shadow-soft);
+  margin-bottom: 20px;
 }
 
-.project-detail-image img {
+.gallery-main img {
   width: 100%;
-  height: auto;
+  max-height: 600px;
+  object-fit: contain;
   display: block;
+  background: #f5f5f5;
+}
+
+.gallery-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(40, 57, 26, 0.9);
+  padding: 10px 20px;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+}
+
+.gallery-btn {
+  background: transparent;
+  border: none;
+  color: var(--light-color);
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0 10px;
+  transition: var(--transition);
+  line-height: 1;
+}
+
+.gallery-btn:hover {
+  color: var(--secondary-color);
+  transform: scale(1.2);
+}
+
+.gallery-counter {
+  color: var(--light-color);
+  font-weight: 600;
+  min-width: 60px;
+  text-align: center;
+}
+
+.gallery-thumbnails {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.gallery-thumbnails img {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: var(--transition);
+  border: 3px solid transparent;
+}
+
+.gallery-thumbnails img:hover {
+  opacity: 0.8;
+}
+
+.gallery-thumbnails img.active {
+  opacity: 1;
+  border-color: var(--accent-color);
+}
+
+/* 전시물 섹션 */
+.project-exhibits {
+  margin-top: 60px;
+}
+
+.project-exhibits h3 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.exhibits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.exhibit-card {
+  background: linear-gradient(135deg, var(--light-color) 0%, rgba(194, 184, 163, 0.1) 100%);
+  border: 1px solid var(--accent-color);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: var(--transition);
+  box-shadow: var(--shadow-soft);
+}
+
+.exhibit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.exhibit-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.exhibit-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: var(--transition);
+}
+
+.exhibit-card:hover .exhibit-image img {
+  transform: scale(1.1);
+}
+
+.exhibit-content {
+  padding: 20px;
+}
+
+.exhibit-content h4 {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.exhibit-content p {
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.exhibit-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.exhibit-tag {
+  font-size: 0.85rem;
+  padding: 5px 12px;
+  background: var(--accent-color);
+  color: var(--light-color);
+  border-radius: 15px;
+  font-weight: 500;
 }
 
 /* CI 섹션 */

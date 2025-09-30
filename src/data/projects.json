@@ -1,10 +1,34 @@
 [
   {
+    "id": "Solution_PhotoBooth",
+    "title": "포토부스 솔루션",
+    "category": "솔루션",
+    "tags": ["solution", "photo", "interactive", "kiosk"],
+    "images": [
+      "./images/portfolio/Solution_PhotoBooth/PhotoBooth_1.png",
+      "./images/portfolio/Solution_PhotoBooth/PhotoBooth_2.png",
+      "./images/portfolio/Solution_PhotoBooth/PhotoBooth_3.png",
+      "./images/portfolio/Solution_PhotoBooth/PhotoBooth_4.png"
+    ],
+    "thumbnail": "./images/portfolio/Solution_PhotoBooth/PhotoBooth_1.png",
+    "description": "전시관을 위한 포토부스 솔루션",
+    "detailedDescription": "박물관, 전시관, 체험관을 위한 간편한 포토부스 솔루션입니다.\n\n터치스크린 기반의 직관적인 UI로 누구나 쉽게 사진을 촬영할 수 있습니다. 촬영한 사진은 즉석에서 인쇄하거나 QR 코드를 통해 자신의 기기로 다운로드할 수 있습니다.\n\n로컬 환경에서 작동하여 개인정보 보호가 철저하며, 전시 테마에 맞춘 커스텀 디자인이 가능합니다. 관람객들에게 특별한 추억을 남길 수 있는 체험형 콘텐츠입니다.",
+    "year": "2024",
+    "client": "다수",
+    "location": "전국",
+    "country": "KR",
+    "link": "/project/Solution_PhotoBooth",
+    "lastmod": "2024-12-01"
+  },
+  {
     "id": "2024_Busan_Democracy",
     "title": "부산 민주공원 전시",
     "category": "전시",
     "tags": ["exhibition", "interactive", "history"],
-    "image": "./images/portfolio/2024_Busan_Democracy/main.jpg",
+    "images": [
+      "./images/portfolio/2024_Busan_Democracy/main.jpg"
+    ],
+    "thumbnail": "./images/portfolio/2024_Busan_Democracy/main.jpg",
     "description": "부산 민주공원 인터랙티브 전시 시스템",
     "year": "2024",
     "client": "부산 민주공원",
@@ -18,21 +42,79 @@
     "title": "제천 점말동굴 전시",
     "category": "전시",
     "tags": ["exhibition", "media-art", "cave"],
-    "image": "./images/portfolio/2024_Jecheon_Jummal/main.jpg",
-    "description": "제천 점말동굴 인터랙티브 전시",
+    "images": [
+      "./images/portfolio/2024_Jecheon_Jummal/Building.avif",
+      "./images/portfolio/2024_Jecheon_Jummal/Kiosk.JPEG",
+      "./images/portfolio/2024_Jecheon_Jummal/History.JPEG",
+      "./images/portfolio/2024_Jecheon_Jummal/ExcavatedArtifacts.JPEG",
+      "./images/portfolio/2024_Jecheon_Jummal/HwarangTrace.JPEG",
+      "./images/portfolio/2024_Jecheon_Jummal/HuntingContest.JPEG",
+      "./images/portfolio/2024_Jecheon_Jummal/LifeSimutionGame.JPEG",
+      "./images/portfolio/2024_Jecheon_Jummal/PhotoBooth.JPEG"
+    ],
+    "thumbnail": "./images/portfolio/2024_Jecheon_Jummal/Building.avif",
+    "description": "제천 점말동굴유적 체험형 전시관",
+    "detailedDescription": "충북 제천시 송학면에 위치한 점말동굴유적체험관은 연면적 499㎡ 규모의 체험형 전시 공간입니다.\n\n'역사터'와 '체험터'로 구성되어 있습니다. 역사터에서는 동굴의 발굴 과정, 신라 화랑의 각자(돌에 새긴 글자), 나말여초(신라 말기~고려 초기) 시기의 석조 유물 등을 영상과 모형으로 생생하게 소개합니다.\n\n체험터에서는 구석기인의 생활상을 직접 체험할 수 있는 인터랙티브 콘텐츠를 제공합니다. 동물 사냥 게임 등 몰입형 체험을 통해 선사시대 문화를 재미있게 학습할 수 있습니다.",
     "year": "2024",
     "client": "제천시",
     "location": "제천, 대한민국",
     "country": "KR",
     "link": "/project/2024_Jecheon_Jummal",
-    "lastmod": "2024-10-15"
+    "lastmod": "2024-10-15",
+    "exhibits": [
+      {
+        "title": "안내 키오스크",
+        "description": "터치스크린 기반 전시관 안내 및 정보 제공 시스템",
+        "tags": ["kiosk", "information", "ui/ux"],
+        "images": ["./images/portfolio/2024_Jecheon_Jummal/Kiosk.JPEG"]
+      },
+      {
+        "title": "역사 연표",
+        "description": "점말동굴의 역사와 시대별 주요 사건을 시각화한 인터랙티브 타임라인",
+        "tags": ["history", "timeline", "education"],
+        "images": ["./images/portfolio/2024_Jecheon_Jummal/History.JPEG"]
+      },
+      {
+        "title": "출토 유물 전시",
+        "description": "나말여초 시기 석조 유물 등 발굴된 유물을 영상과 모형으로 재현한 체험형 전시",
+        "tags": ["artifacts", "history", "exhibition"],
+        "images": ["./images/portfolio/2024_Jecheon_Jummal/ExcavatedArtifacts.JPEG"]
+      },
+      {
+        "title": "화랑의 각자",
+        "description": "신라 화랑이 돌에 글자를 새긴 각자 과정을 체험할 수 있는 인터랙티브 콘텐츠",
+        "tags": ["hwarang", "history", "interactive"],
+        "images": ["./images/portfolio/2024_Jecheon_Jummal/HwarangTrace.JPEG"]
+      },
+      {
+        "title": "동물 사냥 게임",
+        "description": "구석기인의 사냥 문화를 직접 체험하는 인터랙티브 게임",
+        "tags": ["game", "hunting", "experience"],
+        "images": ["./images/portfolio/2024_Jecheon_Jummal/HuntingContest.JPEG"]
+      },
+      {
+        "title": "구석기 생활 체험",
+        "description": "구석기 시대 생활상을 체험하는 시뮬레이션 게임",
+        "tags": ["game", "simulation", "interactive"],
+        "images": ["./images/portfolio/2024_Jecheon_Jummal/LifeSimutionGame.JPEG"]
+      },
+      {
+        "title": "체험 포토존",
+        "description": "점말동굴 체험을 기념할 수 있는 포토존",
+        "tags": ["photo", "experience"],
+        "images": ["./images/portfolio/2024_Jecheon_Jummal/PhotoBooth.JPEG"]
+      }
+    ]
   },
   {
     "id": "2024_Wonju_ScienceMuseum",
     "title": "원주 과학관",
     "category": "과학전시",
     "tags": ["exhibition", "science", "interactive"],
-    "image": "./images/portfolio/2024_Wonju_ScienceMuseum/main.jpg",
+    "images": [
+      "./images/portfolio/2024_Wonju_ScienceMuseum/main.jpg"
+    ],
+    "thumbnail": "./images/portfolio/2024_Wonju_ScienceMuseum/main.jpg",
     "description": "원주 과학관 인터랙티브 전시",
     "year": "2024",
     "client": "원주시",
@@ -46,7 +128,10 @@
     "title": "경주 문무대왕 전시",
     "category": "전시",
     "tags": ["exhibition", "history", "interactive"],
-    "image": "./images/portfolio/2025_Gyeongju_Munmu/KakaoTalk_20250803_201124896.png",
+    "images": [
+      "./images/portfolio/2025_Gyeongju_Munmu/KakaoTalk_20250803_201124896.png"
+    ],
+    "thumbnail": "./images/portfolio/2025_Gyeongju_Munmu/KakaoTalk_20250803_201124896.png",
     "description": "경주 문무대왕 역사 전시 시스템",
     "year": "2025",
     "client": "경주시",
@@ -59,14 +144,43 @@
     "id": "2025_Wonju_Sogeumsan",
     "title": "원주 소금산 전시",
     "category": "전시",
-    "tags": ["exhibition", "nature", "kiosk"],
-    "image": "./images/portfolio/2025_Wonju_Sogeumsan/Kiosk.jpg",
-    "description": "원주 소금산 키오스크 및 전시 시스템",
+    "tags": ["exhibition", "media-art", "interactive", "kiosk"],
+    "images": [
+      "./images/portfolio/2025_Wonju_Sogeumsan/Forest_Main.jpg",
+      "./images/portfolio/2025_Wonju_Sogeumsan/Kiosk_Main.jpg",
+      "./images/portfolio/2025_Wonju_Sogeumsan/Forest_1.png",
+      "./images/portfolio/2025_Wonju_Sogeumsan/Kiosk_1.jpg",
+      "./images/portfolio/2025_Wonju_Sogeumsan/Kiosk_3.jpg"
+    ],
+    "thumbnail": "./images/portfolio/2025_Wonju_Sogeumsan/Forest_Main.jpg",
+    "description": "나만의 정원을 커스터마이징하는 인터랙티브 미디어 아트",
+    "detailedDescription": "원주 소금산 자연휴양림에 설치된 인터랙티브 미디어 아트 전시입니다.\n\n관람객들은 키오스크에서 자신만의 정원을 직접 디자인하고 꾸밀 수 있습니다. 나무, 꽃, 장식물 등을 선택하고 배치한 후, 자신만의 커스텀 정원을 완성하면 대형 디스플레이에 실시간으로 표현됩니다.\n\n관람객들은 디스플레이에 표시된 자신의 정원과 함께 사진을 찍으며 특별한 추억을 남길 수 있습니다. 개인화된 경험을 제공하는 참여형 미디어 아트 전시입니다.",
     "year": "2025",
     "client": "원주시",
     "location": "원주, 대한민국",
     "country": "KR",
     "link": "/project/2025_Wonju_Sogeumsan",
-    "lastmod": "2025-01-20"
+    "lastmod": "2025-01-20",
+    "exhibits": [
+      {
+        "title": "인터랙티브 키오스크",
+        "description": "나만의 정원을 직접 디자인하는 터치스크린 인터페이스. 나무, 꽃, 장식물을 선택하고 배치하여 개인화된 정원을 만들 수 있습니다.",
+        "tags": ["kiosk", "touchscreen", "customization"],
+        "images": [
+          "./images/portfolio/2025_Wonju_Sogeumsan/Kiosk_Main.jpg",
+          "./images/portfolio/2025_Wonju_Sogeumsan/Kiosk_1.jpg",
+          "./images/portfolio/2025_Wonju_Sogeumsan/Kiosk_3.jpg"
+        ]
+      },
+      {
+        "title": "대형 디스플레이",
+        "description": "키오스크에서 제작한 나만의 정원이 실시간으로 표현되는 대형 디스플레이. 관람객들은 자신의 작품과 함께 포토존으로 활용 가능합니다.",
+        "tags": ["display", "photo-zone", "real-time"],
+        "images": [
+          "./images/portfolio/2025_Wonju_Sogeumsan/Forest_Main.jpg",
+          "./images/portfolio/2025_Wonju_Sogeumsan/Forest_1.png"
+        ]
+      }
+    ]
   }
 ]
