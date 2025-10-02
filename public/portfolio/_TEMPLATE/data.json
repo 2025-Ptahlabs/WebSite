@@ -1,0 +1,27 @@
+{
+  "id": "2025_ProjectName",
+  "title": "프로젝트 제목",
+  "category": "전시",
+  "tags": ["exhibition", "interactive"],
+  "images": [
+    "image1.jpg",
+    "image2.jpg"
+  ],
+  "thumbnail": "image1.jpg",
+  "description": "프로젝트 짧은 설명 (1-2줄)",
+  "detailedDescription": "프로젝트 상세 설명입니다.\n\n여러 단락으로 작성할 수 있습니다.\n\n\\n\\n을 사용하면 줄바꿈이 됩니다.",
+  "year": "2025",
+  "client": "클라이언트명",
+  "location": "도시, 대한민국",
+  "country": "KR",
+  "link": "/project/2025_ProjectName",
+  "lastmod": "2025-01-30",
+  "exhibits": [
+    {
+      "title": "전시물 1",
+      "description": "전시물 설명",
+      "tags": ["kiosk", "interactive"],
+      "images": ["exhibit1.jpg"]
+    }
+  ]
+}

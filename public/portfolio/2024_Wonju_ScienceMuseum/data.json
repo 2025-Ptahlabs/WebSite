@@ -1,0 +1,20 @@
+{
+  "id": "2024_Wonju_ScienceMuseum",
+  "title": "원주 과학관",
+  "category": "과학전시",
+  "tags": [
+    "exhibition",
+    "science",
+    "interactive"
+  ],
+  "images": [
+    "main.jpg"
+  ],
+  "thumbnail": "main.jpg",
+  "description": "원주 과학관 인터랙티브 전시",
+  "year": "2024",
+  "client": "원주시",
+  "location": "원주, 대한민국",
+  "country": "KR",
+  "lastmod": "2024-09-30"
+}

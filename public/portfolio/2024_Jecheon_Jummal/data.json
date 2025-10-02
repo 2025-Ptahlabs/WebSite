@@ -1,0 +1,113 @@
+{
+  "id": "2024_Jecheon_Jummal",
+  "title": "제천 점말동굴 전시",
+  "category": "전시",
+  "tags": [
+    "exhibition",
+    "media-art",
+    "cave"
+  ],
+  "images": [
+    "Building.avif",
+    "Kiosk.JPEG",
+    "History.JPEG",
+    "ExcavatedArtifacts.JPEG",
+    "HwarangTrace.JPEG",
+    "HuntingContest.JPEG",
+    "LifeSimutionGame.JPEG",
+    "PhotoBooth.JPEG"
+  ],
+  "thumbnail": "Building.avif",
+  "description": "제천 점말동굴유적 체험형 전시관",
+  "detailedDescription": "충북 제천시 송학면에 위치한 점말동굴유적체험관은 연면적 499㎡ 규모의 체험형 전시 공간입니다.\n\n'역사터'와 '체험터'로 구성되어 있습니다. 역사터에서는 동굴의 발굴 과정, 신라 화랑의 각자(돌에 새긴 글자), 나말여초(신라 말기~고려 초기) 시기의 석조 유물 등을 영상과 모형으로 생생하게 소개합니다.\n\n체험터에서는 구석기인의 생활상을 직접 체험할 수 있는 인터랙티브 콘텐츠를 제공합니다. 동물 사냥 게임 등 몰입형 체험을 통해 선사시대 문화를 재미있게 학습할 수 있습니다.",
+  "year": "2024",
+  "client": "제천시",
+  "location": "제천, 대한민국",
+  "country": "KR",
+  "lastmod": "2024-10-15",
+  "exhibits": [
+    {
+      "title": "안내 키오스크",
+      "description": "터치스크린 기반 전시관 안내 및 정보 제공 시스템",
+      "tags": [
+        "kiosk",
+        "information",
+        "ui/ux"
+      ],
+      "images": [
+        "Kiosk.JPEG"
+      ]
+    },
+    {
+      "title": "역사 연표",
+      "description": "점말동굴의 역사와 시대별 주요 사건을 시각화한 인터랙티브 타임라인",
+      "tags": [
+        "history",
+        "timeline",
+        "education"
+      ],
+      "images": [
+        "History.JPEG"
+      ]
+    },
+    {
+      "title": "출토 유물 전시",
+      "description": "나말여초 시기 석조 유물 등 발굴된 유물을 영상과 모형으로 재현한 체험형 전시",
+      "tags": [
+        "artifacts",
+        "history",
+        "exhibition"
+      ],
+      "images": [
+        "ExcavatedArtifacts.JPEG"
+      ]
+    },
+    {
+      "title": "화랑의 각자",
+      "description": "신라 화랑이 돌에 글자를 새긴 각자 과정을 체험할 수 있는 인터랙티브 콘텐츠",
+      "tags": [
+        "hwarang",
+        "history",
+        "interactive"
+      ],
+      "images": [
+        "HwarangTrace.JPEG"
+      ]
+    },
+    {
+      "title": "동물 사냥 게임",
+      "description": "구석기인의 사냥 문화를 직접 체험하는 인터랙티브 게임",
+      "tags": [
+        "game",
+        "hunting",
+        "experience"
+      ],
+      "images": [
+        "HuntingContest.JPEG"
+      ]
+    },
+    {
+      "title": "구석기 생활 체험",
+      "description": "구석기 시대 생활상을 체험하는 시뮬레이션 게임",
+      "tags": [
+        "game",
+        "simulation",
+        "interactive"
+      ],
+      "images": [
+        "LifeSimutionGame.JPEG"
+      ]
+    },
+    {
+      "title": "체험 포토존",
+      "description": "점말동굴 체험을 기념할 수 있는 포토존",
+      "tags": [
+        "photo",
+        "experience"
+      ],
+      "images": [
+        "PhotoBooth.JPEG"
+      ]
+    }
+  ]
+}

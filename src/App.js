@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/layouts/Header';
 import Hero from './components/1_Hero';
 import Portfolio from './components/2_Portfolio';
-// import Partners from './components/3_Partners';
+import Solution from './components/3_Solution';
 import CI from './components/4_CI';
 import Contact from './components/5_Contact';
 import Footer from './components/layouts/Footer';
@@ -14,7 +14,6 @@ function HomePage() {
     <>
       <Hero />
       <Portfolio />
-      {/*<Partners />*/}
       <CI />
       <Contact />
     </>
@@ -27,6 +26,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/solution" element={<Solution />} />
         <Route path="/project/:projectId" element={<ProjectDetail />} />
       </Routes>
       <Footer />

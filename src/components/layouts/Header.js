@@ -58,19 +58,28 @@ const Header = () => {
   const handleSectionClick = (e, sectionId) => {
     e.preventDefault();
     if (location.pathname !== '/') {
+      // 다른 페이지에서 메인으로 이동 시
+      window.scrollTo({ top: 0 });
       navigate('/');
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 100);
+      }, 300);
     } else {
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
+    closeMenu();
+  };
+
+  const handleSolutionClick = (e) => {
+    e.preventDefault();
+    navigate('/solution');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     closeMenu();
   };
 
@@ -90,10 +99,13 @@ const Header = () => {
 
         <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <li className="nav-item">
-            <a href="/" className={`nav-link ${activeSection === '' ? 'active' : ''}`} onClick={handleHomeClick}>Home</a>
+            <a href="/" className={`nav-link ${location.pathname === '/' && activeSection === '' ? 'active' : ''}`} onClick={handleHomeClick}>Home</a>
           </li>
           <li className="nav-item">
             <a href="#portfolio" className={`nav-link ${activeSection === 'portfolio' ? 'active' : ''}`} onClick={(e) => handleSectionClick(e, 'portfolio')}>Portfolio</a>
+          </li>
+          <li className="nav-item">
+            <a href="/solution" className={`nav-link ${location.pathname === '/solution' ? 'active' : ''}`} onClick={handleSolutionClick}>Solution</a>
           </li>
           <li className="nav-item">
             <a href="#ci" className={`nav-link ${activeSection === 'ci' ? 'active' : ''}`} onClick={(e) => handleSectionClick(e, 'ci')}>CI</a>

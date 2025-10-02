@@ -1,0 +1,55 @@
+{
+  "id": "2025_Wonju_Sogeumsan",
+  "title": "원주 소금산 전시",
+  "category": "전시",
+  "tags": [
+    "exhibition",
+    "media-art",
+    "interactive",
+    "kiosk"
+  ],
+  "images": [
+    "Forest_Main.jpg",
+    "Kiosk_Main.jpg",
+    "Forest_1.png",
+    "Kiosk_1.jpg",
+    "Kiosk_3.jpg"
+  ],
+  "thumbnail": "Forest_Main.jpg",
+  "description": "나만의 정원을 커스터마이징하는 인터랙티브 미디어 아트",
+  "detailedDescription": "원주 소금산 자연휴양림에 설치된 인터랙티브 미디어 아트 전시입니다.\n\n관람객들은 키오스크에서 자신만의 정원을 직접 디자인하고 꾸밀 수 있습니다. 나무, 꽃, 장식물 등을 선택하고 배치한 후, 자신만의 커스텀 정원을 완성하면 대형 디스플레이에 실시간으로 표현됩니다.\n\n관람객들은 디스플레이에 표시된 자신의 정원과 함께 사진을 찍으며 특별한 추억을 남길 수 있습니다. 개인화된 경험을 제공하는 참여형 미디어 아트 전시입니다.",
+  "year": "2025",
+  "client": "원주시",
+  "location": "원주, 대한민국",
+  "country": "KR",
+  "lastmod": "2025-01-20",
+  "exhibits": [
+    {
+      "title": "인터랙티브 키오스크",
+      "description": "나만의 정원을 직접 디자인하는 터치스크린 인터페이스. 나무, 꽃, 장식물을 선택하고 배치하여 개인화된 정원을 만들 수 있습니다.",
+      "tags": [
+        "kiosk",
+        "touchscreen",
+        "customization"
+      ],
+      "images": [
+        "Kiosk_Main.jpg",
+        "Kiosk_1.jpg",
+        "Kiosk_3.jpg"
+      ]
+    },
+    {
+      "title": "대형 디스플레이",
+      "description": "키오스크에서 제작한 나만의 정원이 실시간으로 표현되는 대형 디스플레이. 관람객들은 자신의 작품과 함께 포토존으로 활용 가능합니다.",
+      "tags": [
+        "display",
+        "photo-zone",
+        "real-time"
+      ],
+      "images": [
+        "Forest_Main.jpg",
+        "Forest_1.png"
+      ]
+    }
+  ]
+}

@@ -5,7 +5,16 @@
       "Bash(dir)",
       "Bash(dir public)",
       "Bash(dir:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(mkdir:*)",
+      "Bash(node:*)",
+      "Bash(npm run build:*)",
+      "Bash(for dir in */)",
+      "Bash(do if [ -f \"$dirdata.json\" ])",
+      "Bash(then echo \"=== $dir%/ ===\")",
+      "Bash(grep:*)",
+      "Bash(fi)",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []

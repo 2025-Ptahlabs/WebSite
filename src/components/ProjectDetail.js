@@ -1,13 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import projectsData from '../data/projects.json';
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
   const navigate = useNavigate();
-  const project = projectsData.find(p => p.id === projectId);
+  const [project, setProject] = useState(null);
+  const [tagsData, setTagsData] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // 런타임에 프로젝트 데이터와 태그 정의 로드
+  useEffect(() => {
+    const loadProject = async () => {
+      try {
+        // 태그 정의 로드
+        const tagsRes = await fetch('./portfolio/tags.json');
+        const tags = await tagsRes.json();
+        setTagsData(tags);
+
+        const res = await fetch(`./portfolio/${projectId}/data.json`);
+        if (!res.ok) throw new Error('프로젝트를 찾을 수 없습니다.');
+
+        const data = await res.json();
+
+        // 이미지 경로를 절대 경로로 변환
+        const projectData = {
+          ...data,
+          images: data.images?.map(img => `./portfolio/${projectId}/${img}`) || [],
+          thumbnail: data.thumbnail ? `./portfolio/${projectId}/${data.thumbnail}` : '',
+          exhibits: data.exhibits?.map(exhibit => ({
+            ...exhibit,
+            images: exhibit.images?.map(img => `./portfolio/${projectId}/${img}`) || []
+          })) || []
+        };
+
+        setProject(projectData);
+      } catch (error) {
+        console.error('프로젝트 로드 실패:', error);
+        setProject(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProject();
+  }, [projectId]);
+
+  // 태그를 한글명으로 변환
+  const getTagLabel = (tag) => {
+    if (tagsData && tagsData.tags[tag]) {
+      return tagsData.tags[tag].name;
+    }
+    return tag;
+  };
+
+  if (loading) {
+    return (
+      <div className="project-detail-container">
+        <div className="container">
+          <p>로딩 중...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!project) {
     return (
@@ -48,8 +103,8 @@ const ProjectDetail = () => {
           </div>
 
           <div className="project-detail-tags">
-            {project.tags.map(tag => (
-              <span key={tag} className="project-detail-tag">#{tag}</span>
+            {project.tags.filter(tag => tag !== 'solution').map(tag => (
+              <span key={tag} className="project-detail-tag">#{getTagLabel(tag)}</span>
             ))}
           </div>
 
@@ -128,7 +183,7 @@ const ProjectDetail = () => {
                       {exhibit.tags && (
                         <div className="exhibit-tags">
                           {exhibit.tags.map(tag => (
-                            <span key={tag} className="exhibit-tag">#{tag}</span>
+                            <span key={tag} className="exhibit-tag">#{getTagLabel(tag)}</span>
                           ))}
                         </div>
                       )}

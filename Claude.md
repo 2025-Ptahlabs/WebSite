@@ -2,7 +2,7 @@
 
 **프로젝트명**: PTAHLABS 공식 웹사이트
 **개발 기간**: 2025년 1월
-**최종 업데이트**: 2025년 1월 30일
+**최종 업데이트**: 2025년 10월 2일 (태그 시스템 추가)
 **기술 스택**: React, React Router, GitHub Pages
 
 ---
@@ -65,18 +65,25 @@ WebSite/
 │       └── deploy.yml          # GitHub Actions 배포 설정
 ├── public/
 │   ├── images/
-│   │   ├── logo/               # 로고 이미지
-│   │   └── portfolio/          # 프로젝트 이미지
-│   │       ├── 2024_Busan_Democracy/
-│   │       ├── 2024_Jecheon_Jummal/
-│   │       ├── 2024_Wonju_ScienceMuseum/
-│   │       ├── 2025_Gyeongju_Munmu/
-│   │       └── 2025_Wonju_Sogeumsan/
+│   │   └── logo/               # 로고 이미지
+│   ├── portfolio/              # 프로젝트 데이터 관리
+│   │   ├── _TEMPLATE/          # 템플릿 폴더
+│   │   │   ├── data.json       # 데이터 템플릿
+│   │   │   └── README.md       # 상세 가이드
+│   │   ├── 2024_Jecheon_Jummal/
+│   │   │   ├── data.json       # 프로젝트 데이터
+│   │   │   └── (이미지들)
+│   │   ├── index.json          # 프로젝트 목록 (자동 생성)
+│   │   ├── tags.json           # 태그 정의 및 카테고리
+│   │   └── README.md           # 간단 가이드
 │   ├── index.html              # HTML 템플릿 (SEO 메타 태그 포함)
-│   ├── sitemap.xml             # 검색 엔진 sitemap
+│   ├── sitemap.xml             # 검색 엔진 sitemap (자동 생성)
 │   └── robots.txt              # 크롤러 설정
 ├── scripts/
-│   └── generate-sitemap.js     # Sitemap 자동 생성 스크립트
+│   ├── generate-index.js       # 프로젝트 인덱스 자동 생성
+│   ├── generate-sitemap.js     # Sitemap 자동 생성
+│   ├── split-projects.js       # 프로젝트 분리 (1회용)
+│   └── copy-images.js          # 이미지 복사 (1회용)
 ├── src/
 │   ├── components/
 │   │   ├── layouts/
@@ -87,8 +94,7 @@ WebSite/
 │   │   ├── 4_CI.js             # CI 소개 섹션
 │   │   ├── 5_Contact.js        # 연락처 섹션
 │   │   └── ProjectDetail.js    # 프로젝트 상세 페이지
-│   ├── data/
-│   │   └── projects.json       # 프로젝트 데이터
+│   ├── data/                   # (더 이상 사용 안 함)
 │   ├── App.js                  # 라우팅 설정
 │   ├── App.css                 # 전체 스타일
 │   └── index.js                # React 엔트리 포인트
@@ -109,8 +115,10 @@ WebSite/
 - clamp() 함수로 유동적인 폰트 크기
 
 ### 2. 동적 포트폴리오
-- **JSON 기반 데이터 관리** (`src/data/projects.json`)
-- 태그 기반 필터링 (exhibition, interactive, history 등)
+- **런타임 동적 로드**: 각 프로젝트의 data.json을 실시간으로 불러옴
+- **폴더 기반 관리**: 프로젝트별 독립 폴더 (`public/portfolio/프로젝트명/`)
+- **태그 시스템**: tags.json으로 중앙 관리, 한글명 자동 표시
+- 태그 기반 필터링 (인터랙티브, 전시, 역사 등)
 - 프로젝트 클릭 시 상세 페이지로 이동
 - 위치 정보 표시
 
@@ -127,6 +135,7 @@ WebSite/
 
 ### 5. 자동 배포
 - GitHub Actions를 통한 main 브랜치 자동 배포
+- 프로젝트 인덱스 빌드 시 자동 생성
 - Sitemap 빌드 시 자동 생성
 
 ---
@@ -156,7 +165,7 @@ npm start
 ```bash
 npm run build
 ```
-- Sitemap이 자동으로 생성되고, build 폴더에 정적 파일 생성
+- 프로젝트 인덱스와 Sitemap이 자동으로 생성되고, build 폴더에 정적 파일 생성
 
 ### Sitemap 수동 생성
 
@@ -180,9 +189,10 @@ git push origin main
 
 GitHub Actions가 자동으로:
 1. 의존성 설치
-2. Sitemap 생성
-3. 프로젝트 빌드
-4. gh-pages 브랜치에 배포
+2. 프로젝트 인덱스 생성 (index.json)
+3. Sitemap 생성
+4. 프로젝트 빌드
+5. gh-pages 브랜치에 배포
 
 ### 수동 배포
 
@@ -224,40 +234,54 @@ npm run deploy
 
 ## 🔧 유지보수 가이드
 
-### 새 프로젝트 추가하기
+### 새 프로젝트 추가하기 (비개발자용)
 
-#### 1단계: 이미지 준비
-`/public/images/portfolio/프로젝트ID/` 폴더에 이미지 업로드
+**이제 개발 지식 없이도 쉽게 프로젝트를 추가할 수 있습니다!**
 
-#### 2단계: projects.json 수정
-`/src/data/projects.json`에 새 프로젝트 추가:
+#### 1단계: 템플릿 복사
+`/public/portfolio/_TEMPLATE/` 폴더를 복사해서 새 프로젝트 이름으로 변경
+- 폴더명 형식: `2025_ProjectName` (연도_프로젝트명)
+
+#### 2단계: data.json 수정
+복사한 폴더의 `data.json` 파일을 텍스트 에디터로 열어서 수정:
 
 ```json
 {
-  "id": "2025_NewProject",
-  "title": "새 프로젝트 제목",
+  "id": "2025_ProjectName",
+  "title": "프로젝트 제목",
   "category": "전시",
   "tags": ["exhibition", "interactive"],
-  "image": "./images/portfolio/2025_NewProject/main.jpg",
-  "description": "프로젝트 설명",
+  "images": ["image1.jpg", "image2.jpg"],
+  "thumbnail": "image1.jpg",
+  "description": "짧은 설명",
   "year": "2025",
   "client": "클라이언트명",
-  "location": "위치, 대한민국",
+  "location": "도시, 대한민국",
   "country": "KR",
-  "link": "/project/2025_NewProject",
-  "lastmod": "2025-01-30"
+  "lastmod": "2025-10-01"
 }
 ```
 
-#### 3단계: 빌드 및 배포
+**중요**:
+- `id`는 폴더명과 동일하게!
+- 이미지 경로는 파일명만 입력 (예: `"image1.jpg"`)
+- **태그는 영문으로 입력**: `tags.json`에 정의된 태그 사용 (자동으로 한글 표시됨)
+  - 예: `"interactive"` → 화면에 "인터랙티브"로 표시
+  - 사용 가능한 태그: `interactive`, `media-art`, `kiosk`, `exhibition`, `history` 등
+  - 새 태그 추가 시 `/public/portfolio/tags.json` 수정 필요
+
+#### 3단계: 이미지 추가
+프로젝트 폴더에 이미지 파일 복사
+
+#### 4단계: 빌드 및 배포
 ```bash
-npm run build
+npm run build           # 빌드 (index.json 자동 생성)
 git add .
 git commit -m "새 프로젝트 추가: 프로젝트명"
 git push origin main
 ```
 
-Sitemap은 자동으로 업데이트됩니다.
+**자세한 가이드**: `/public/portfolio/README.md` 참고
 
 ### CI 정보 수정
 
@@ -340,6 +364,33 @@ Sitemap은 자동으로 업데이트됩니다.
 
 ## 📝 변경 이력
 
+### 2025-10-02 (오후)
+- **태그 시스템 중앙 관리**
+- `tags.json` 추가: 모든 태그 정의를 중앙에서 관리
+- 태그 카테고리: 기술(technology), 분야(genre), 솔루션(solution), 체험(experience)
+- 각 태그에 한글명, 설명 추가 (예: `interactive` → `인터랙티브`)
+- Portfolio/ProjectDetail/Solution 컴포넌트에서 한글명 자동 표시
+- 솔루션 페이지 별도 분리 (`/solution`)
+- 비콘 도슨트 솔루션 추가
+
+### 2025-10-02 (오전)
+- **런타임 동적 로드 방식으로 전환**
+- 빌드 시 병합 불필요: 각 프로젝트 data.json을 런타임에 fetch
+- `generate-index.js` 추가: 프로젝트 목록 자동 생성
+- `merge-projects.js` 삭제: 더 이상 병합 과정 불필요
+- `public/images/portfolio` 삭제: 이미지가 각 프로젝트 폴더로 이동
+- Portfolio/ProjectDetail 컴포넌트: useEffect로 동적 로드
+- Sitemap 스크립트: portfolio 폴더 직접 스캔으로 변경
+- 프로젝트 추가 시 폴더만 생성하면 자동 인식
+
+### 2025-10-01
+- **비개발자용 포트폴리오 관리 시스템 구축**
+- `/public/portfolio/` 폴더 구조로 개편
+- 각 프로젝트가 독립 폴더로 관리 (data.json + 이미지)
+- `merge-projects.js` 스크립트 추가 (자동 병합)
+- 프로젝트 템플릿 및 가이드 작성
+- 비개발자도 쉽게 프로젝트 추가/수정 가능
+
 ### 2025-01-30
 - 초기 개발 완료
 - 포트폴리오 시스템 구현
@@ -363,4 +414,4 @@ Sitemap은 자동으로 업데이트됩니다.
 ---
 
 **이 문서는 Claude AI가 작성했습니다.**
-**최종 검토**: 2025년 1월 30일
+**최종 검토**: 2025년 10월 2일

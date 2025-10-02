@@ -1,0 +1,53 @@
+{
+  "id": "Solution_BeaconDocent",
+  "title": "비콘 도슨트 솔루션",
+  "category": "솔루션",
+  "tags": ["solution", "beacon", "docent", "mobile", "IoT"],
+  "images": [
+    "KakaoTalk_20251002_220924594.jpg",
+    "KakaoTalk_20251002_220924594_01.jpg",
+    "KakaoTalk_20251002_220924594_02.jpg",
+    "KakaoTalk_20251002_220924594_03.jpg",
+    "KakaoTalk_20251002_220924594_04.jpg"
+  ],
+  "thumbnail": "KakaoTalk_20251002_220924594.jpg",
+  "description": "비콘 기술을 활용한 스마트 전시 안내 시스템",
+  "detailedDescription": "비콘(Bluetooth Beacon) 기술을 활용하여 관람객의 위치를 실시간으로 파악하고, 전시물에 가까워지면 자동으로 음성 및 영상 해설을 제공하는 스마트 도슨트 솔루션입니다.\n\n관람객이 전시물 근처에 도착하면 모바일 기기로 자동 안내가 시작되어 별도의 조작 없이 자연스러운 관람 경험을 제공합니다. 다국어 지원으로 외국인 관람객도 쉽게 이용할 수 있으며, 관람 동선 데이터를 수집하여 전시 기획에 활용할 수 있습니다.\n\n기존 오디오 가이드 대여의 번거로움을 없애고, 관람객 본인의 스마트폰으로 편리하게 이용 가능합니다.",
+  "year": "2024",
+  "client": "다수",
+  "location": "전국",
+  "country": "KR",
+  "lastmod": "2024-12-01",
+  "features": [
+    {
+      "title": "위치 기반 자동 안내",
+      "description": "비콘 센서가 관람객의 위치를 감지하여 전시물 앞에 서면 자동으로 해설이 재생됩니다.",
+      "icon": "location"
+    },
+    {
+      "title": "다국어 지원",
+      "description": "한국어, 영어, 중국어, 일본어 등 다양한 언어로 음성 및 텍스트 안내를 제공합니다.",
+      "icon": "language"
+    },
+    {
+      "title": "풍부한 콘텐츠",
+      "description": "음성 해설, 텍스트 설명, 이미지, 동영상 등 다양한 형태의 콘텐츠를 제공합니다.",
+      "icon": "media"
+    },
+    {
+      "title": "관람 동선 분석",
+      "description": "관람객의 이동 경로와 체류 시간을 분석하여 전시 개선에 활용할 수 있습니다.",
+      "icon": "analytics"
+    },
+    {
+      "title": "모바일 최적화",
+      "description": "별도 기기 없이 관람객 본인의 스마트폰으로 간편하게 이용 가능합니다.",
+      "icon": "mobile"
+    },
+    {
+      "title": "손쉬운 관리",
+      "description": "웹 기반 CMS로 전시 콘텐츠와 비콘 위치를 쉽게 관리하고 업데이트할 수 있습니다.",
+      "icon": "manage"
+    }
+  ]
+}

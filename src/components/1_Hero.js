@@ -11,7 +11,7 @@ const Hero = () => {
       <div className="container hero-content">
         <h1 className="hero-title">PTAHLABS</h1>
         <p className="hero-subtitle">
-          미디어아트와 전시 솔루션을 통해 혁신적인 디지털 경험을 창조합니다
+          사람과 공간을 연결하며 새로운 경험을 창조하는 기술
         </p>
         <div className="hero-buttons">
           <button onClick={() => handleScrollTo('portfolio')} className="btn">포트폴리오 보기</button>
