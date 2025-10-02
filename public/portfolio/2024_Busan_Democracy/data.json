@@ -7,10 +7,8 @@
     "interactive",
     "history"
   ],
-  "images": [
-    "main.jpg"
-  ],
-  "thumbnail": "main.jpg",
+  "images": [],
+  "thumbnail": "",
   "description": "부산 민주공원 인터랙티브 전시 시스템",
   "year": "2024",
   "client": "부산 민주공원",

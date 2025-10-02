@@ -7,10 +7,8 @@
     "science",
     "interactive"
   ],
-  "images": [
-    "main.jpg"
-  ],
-  "thumbnail": "main.jpg",
+  "images": [],
+  "thumbnail": "",
   "description": "원주 과학관 인터랙티브 전시",
   "year": "2024",
   "client": "원주시",
