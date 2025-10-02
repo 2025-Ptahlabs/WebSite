@@ -1,4 +1,3 @@
-import * as THREE from "three"
 import { useRef, useMemo } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { ContactShadows } from "@react-three/drei"
@@ -23,7 +22,6 @@ function Sphere({ position, velocity, scale, offset, brightness, allSpheres, ind
   const meshRef = useRef()
   const vel = useRef(velocity)
   const pos = useRef(position)
-  const initialPos = useRef(position)
 
   useFrame((state, delta) => {
     if (!meshRef.current) return
