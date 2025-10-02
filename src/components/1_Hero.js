@@ -1,3 +1,6 @@
+import { Suspense } from 'react';
+import HeroBaubleEffect from './HeroBaubleEffect';
+
 const Hero = () => {
   const handleScrollTo = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -8,6 +11,14 @@ const Hero = () => {
 
   return (
     <section className="hero">
+      {/* 3D 볼 애니메이션 배경 */}
+      <div className="hero-bauble-bg">
+        <Suspense fallback={null}>
+          <HeroBaubleEffect />
+        </Suspense>
+      </div>
+
+      {/* 콘텐츠 */}
       <div className="container hero-content">
         <h1 className="hero-title">PTAHLABS</h1>
         <p className="hero-subtitle">
