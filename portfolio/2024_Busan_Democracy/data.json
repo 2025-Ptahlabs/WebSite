@@ -1,0 +1,20 @@
+{
+  "id": "2024_Busan_Democracy",
+  "title": "부산 민주공원 전시",
+  "category": "전시",
+  "tags": [
+    "exhibition",
+    "interactive",
+    "history"
+  ],
+  "images": [
+    "main.jpg"
+  ],
+  "thumbnail": "main.jpg",
+  "description": "부산 민주공원 인터랙티브 전시 시스템",
+  "year": "2024",
+  "client": "부산 민주공원",
+  "location": "부산, 대한민국",
+  "country": "KR",
+  "lastmod": "2024-11-20"
+}
