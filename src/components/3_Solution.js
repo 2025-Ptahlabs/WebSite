@@ -37,15 +37,18 @@ const Solution = () => {
 
         const projects = (await Promise.all(projectPromises)).filter(p => p !== null);
 
+        // hidden: true인 프로젝트 제외
+        const visibleProjects = projects.filter(project => !project.hidden);
+
         // 연도 내림차순 정렬
-        projects.sort((a, b) => {
+        visibleProjects.sort((a, b) => {
           const yearA = parseInt(a.year) || 0;
           const yearB = parseInt(b.year) || 0;
           if (yearB !== yearA) return yearB - yearA;
           return b.id.localeCompare(a.id);
         });
 
-        setSolutionProjects(projects);
+        setSolutionProjects(visibleProjects);
       } catch (error) {
         console.error('솔루션 로드 실패:', error);
       } finally {
@@ -102,11 +105,6 @@ const Solution = () => {
               />
               <div className="portfolio-overlay">
                 <h3 className="portfolio-title">{item.title}</h3>
-                <div className="portfolio-tags">
-                  {item.tags.filter(tag => tag !== 'solution').map(tag => (
-                    <span key={tag} className="portfolio-tag">#{getTagLabel(tag)}</span>
-                  ))}
-                </div>
               </div>
             </div>
           ))}

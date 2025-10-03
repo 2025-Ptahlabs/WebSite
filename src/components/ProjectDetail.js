@@ -7,7 +7,7 @@ const ProjectDetail = () => {
   const [project, setProject] = useState(null);
   const [tagsData, setTagsData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [exhibitImageIndexes, setExhibitImageIndexes] = useState({});
 
   // 런타임에 프로젝트 데이터와 태그 정의 로드
   useEffect(() => {
@@ -80,12 +80,13 @@ const ProjectDetail = () => {
   return (
     <div className="project-detail-container">
       <div className="container">
-        <button className="btn-back" onClick={() => navigate('/')}>
-          ← 포트폴리오로 돌아가기
-        </button>
-
         <div className="project-detail-content">
-          <h1 className="project-detail-title">{project.title}</h1>
+          <div className="project-header">
+            <h1 className="project-detail-title">{project.title}</h1>
+            <button className="btn-back" onClick={() => navigate('/')}>
+              ← 포트폴리오로 돌아가기
+            </button>
+          </div>
 
           <div className="project-detail-meta">
             <span className="project-meta-item">
@@ -94,74 +95,34 @@ const ProjectDetail = () => {
             <span className="project-meta-item">
               <strong>위치:</strong> {project.location}
             </span>
-            <span className="project-meta-item">
-              <strong>클라이언트:</strong> {project.client}
-            </span>
-            <span className="project-meta-item">
-              <strong>카테고리:</strong> {project.category}
-            </span>
+            <div className="project-detail-tags">
+              {project.tags.filter(tag => tag !== 'solution').map(tag => (
+                <span key={tag} className="project-detail-tag">#{getTagLabel(tag)}</span>
+              ))}
+            </div>
           </div>
 
-          <div className="project-detail-tags">
-            {project.tags.filter(tag => tag !== 'solution').map(tag => (
-              <span key={tag} className="project-detail-tag">#{getTagLabel(tag)}</span>
-            ))}
-          </div>
+          {project.thumbnail && (
+            <div className="project-thumbnail">
+              <img src={project.thumbnail} alt={project.title} />
+            </div>
+          )}
 
           <div className="project-detail-description">
-            <h3>프로젝트 개요</h3>
-            <p>{project.description}</p>
+            {project.descriptionTitle && (
+              <h4 className="project-subtitle">{project.descriptionTitle}</h4>
+            )}
             {project.detailedDescription && (
               <div className="detailed-content">
-                {project.detailedDescription.split('\n').map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <div className="project-detail-gallery">
-            <div className="gallery-main">
-              <img
-                src={project.images[currentImageIndex]}
-                alt={`${project.title} - ${currentImageIndex + 1}`}
-              />
-              {project.images.length > 1 && (
-                <div className="gallery-controls">
-                  <button
-                    className="gallery-btn prev"
-                    onClick={() => setCurrentImageIndex(prev =>
-                      prev === 0 ? project.images.length - 1 : prev - 1
-                    )}
-                  >
-                    ‹
-                  </button>
-                  <span className="gallery-counter">
-                    {currentImageIndex + 1} / {project.images.length}
-                  </span>
-                  <button
-                    className="gallery-btn next"
-                    onClick={() => setCurrentImageIndex(prev =>
-                      prev === project.images.length - 1 ? 0 : prev + 1
-                    )}
-                  >
-                    ›
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {project.images.length > 1 && (
-              <div className="gallery-thumbnails">
-                {project.images.map((img, index) => (
-                  <img
-                    key={index}
-                    src={img}
-                    alt={`${project.title} thumbnail ${index + 1}`}
-                    className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
-                    onClick={() => setCurrentImageIndex(index)}
-                  />
-                ))}
+                {Array.isArray(project.detailedDescription) ? (
+                  project.detailedDescription.map((text, index) => (
+                    <p key={index}>{text}</p>
+                  ))
+                ) : (
+                  project.detailedDescription.split('\n').map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))
+                )}
               </div>
             )}
           </div>
@@ -170,26 +131,60 @@ const ProjectDetail = () => {
             <div className="project-exhibits">
               <h3>전시물</h3>
               <div className="exhibits-grid">
-                {project.exhibits.map((exhibit, index) => (
-                  <div key={index} className="exhibit-card">
-                    {exhibit.images && exhibit.images.length > 0 && (
-                      <div className="exhibit-image">
-                        <img src={exhibit.images[0]} alt={exhibit.title} />
-                      </div>
-                    )}
-                    <div className="exhibit-content">
-                      <h4>{exhibit.title}</h4>
-                      <p>{exhibit.description}</p>
-                      {exhibit.tags && (
-                        <div className="exhibit-tags">
-                          {exhibit.tags.map(tag => (
-                            <span key={tag} className="exhibit-tag">#{getTagLabel(tag)}</span>
-                          ))}
+                {project.exhibits.map((exhibit, index) => {
+                  const currentImageIndex = exhibitImageIndexes[index] || 0;
+
+                  return (
+                    <div key={index} className="exhibit-card">
+                      {exhibit.images && exhibit.images.length > 0 && (
+                        <div className="exhibit-image-wrapper">
+                          <div className="exhibit-image-container">
+                            <img
+                              src={exhibit.images[currentImageIndex]}
+                              alt={`${exhibit.title} - ${currentImageIndex + 1}`}
+                            />
+                          </div>
+                          {exhibit.images.length > 1 && (
+                            <div className="exhibit-image-controls">
+                              <button
+                                className="exhibit-image-btn prev"
+                                onClick={() => setExhibitImageIndexes(prev => ({
+                                  ...prev,
+                                  [index]: currentImageIndex === 0 ? exhibit.images.length - 1 : currentImageIndex - 1
+                                }))}
+                              >
+                                ‹
+                              </button>
+                              <span className="exhibit-image-counter">
+                                {currentImageIndex + 1} / {exhibit.images.length}
+                              </span>
+                              <button
+                                className="exhibit-image-btn next"
+                                onClick={() => setExhibitImageIndexes(prev => ({
+                                  ...prev,
+                                  [index]: currentImageIndex === exhibit.images.length - 1 ? 0 : currentImageIndex + 1
+                                }))}
+                              >
+                                ›
+                              </button>
+                            </div>
+                          )}
                         </div>
                       )}
+                      <div className="exhibit-content">
+                        <h4>{exhibit.title}</h4>
+                        <p>{exhibit.description}</p>
+                        {exhibit.tags && (
+                          <div className="exhibit-tags">
+                            {exhibit.tags.map(tag => (
+                              <span key={tag} className="exhibit-tag">#{getTagLabel(tag)}</span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}

@@ -16,7 +16,10 @@
       "Bash(fi)",
       "Bash(done)",
       "Bash(npm install:*)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "Bash(del:*)",
+      "Bash(rm:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []

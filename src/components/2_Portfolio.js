@@ -41,15 +41,18 @@ const Portfolio = () => {
 
         const projects = await Promise.all(projectPromises);
 
+        // hidden: true인 프로젝트 제외
+        const visibleProjects = projects.filter(project => !project.hidden);
+
         // 연도 내림차순 정렬
-        projects.sort((a, b) => {
+        visibleProjects.sort((a, b) => {
           const yearA = parseInt(a.year) || 0;
           const yearB = parseInt(b.year) || 0;
           if (yearB !== yearA) return yearB - yearA;
           return b.id.localeCompare(a.id);
         });
 
-        setProjectsData(projects);
+        setProjectsData(visibleProjects);
       } catch (error) {
         console.error('프로젝트 로드 실패:', error);
       } finally {
