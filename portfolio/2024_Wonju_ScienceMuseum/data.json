@@ -1,18 +1,53 @@
 {
   "id": "2024_Wonju_ScienceMuseum",
   "title": "원주 과학관",
-  "category": "과학전시",
   "tags": [
     "exhibition",
     "science",
     "interactive"
   ],
-  "images": [],
-  "thumbnail": "",
-  "description": "원주 과학관 인터랙티브 전시",
+  "images": ["title"],
+  "thumbnail": "title",
+  "description": "의료 과학을 주제로 한 인터랙티브 전시관",
+  "descriptionTitle": "원주 의료 과학관",
+  "detailedDescription": [
+    "원주 의료 과학관은 최신 의료 기술과 건강 정보를 체험할 수 있는 인터랙티브 전시 공간입니다.",
+    "슬라이딩 비전 기술을 활용하여 복잡한 의학 정보를 직관적으로 이해할 수 있으며, 게임형 시뮬레이션을 통해 재미있게 건강과 질병에 대해 학습할 수 있습니다."
+  ],
   "year": "2024",
-  "client": "원주시",
   "location": "원주, 대한민국",
   "country": "KR",
-  "lastmod": "2024-09-30"
+  "lastmod": "2024-09-30",
+  "exhibits": [
+    {
+      "title": "암진단 슬라이딩 비전",
+      "description": "슬라이딩 비전 기술로 암의 진행 과정과 진단 방법을 시각적으로 학습하는 정보 키오스크",
+      "tags": [
+        "kiosk",
+        "information",
+        "interactive"
+      ],
+      "images": ["2_1.jpg"]
+    },
+    {
+      "title": "뇌 구조 슬라이딩 비전",
+      "description": "슬라이딩 비전으로 뇌의 구조와 기능을 탐험하는 인터랙티브 정보 전시",
+      "tags": [
+        "kiosk",
+        "information",
+        "interactive"
+      ],
+      "images": ["1_3.jpg"]
+    },
+    {
+      "title": "펜데믹 시뮬레이션 게임",
+      "description": "인터랙티브 프로젝터를 활용한 게임형 감염병 확산 시뮬레이션 체험",
+      "tags": [
+        "game",
+        "simulation",
+        "interactive"
+      ],
+      "images": ["2_4.jpg"]
+    }
+  ]
 }
