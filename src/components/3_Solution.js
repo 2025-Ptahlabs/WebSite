@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Solution = () => {
   const [solutionProjects, setSolutionProjects] = useState([]);
-  const [tagsData, setTagsData] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -11,10 +10,6 @@ const Solution = () => {
   useEffect(() => {
     const loadSolutions = async () => {
       try {
-        // 태그 정의 로드
-        const tagsRes = await fetch('./portfolio/tags.json');
-        const tags = await tagsRes.json();
-        setTagsData(tags);
 
         const indexRes = await fetch('./portfolio/index.json');
         const projectIds = await indexRes.json();
@@ -58,14 +53,6 @@ const Solution = () => {
 
     loadSolutions();
   }, []);
-
-  // 태그를 한글명으로 변환
-  const getTagLabel = (tag) => {
-    if (tagsData && tagsData.tags[tag]) {
-      return tagsData.tags[tag].name;
-    }
-    return tag;
-  };
 
   const handleProjectClick = (link) => {
     navigate(link);
