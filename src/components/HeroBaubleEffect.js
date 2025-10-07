@@ -146,10 +146,11 @@ function Sphere({ position, velocity, scale, offset, brightness, allSpheres, ind
 function Spheres() {
   const isMobile = window.innerWidth < 768
   const baseScale = isMobile ? 0.6 : 1.8
+  const sphereCount = isMobile ? 80 : 55
   const allSpheresRef = useRef([])
 
   const spheres = useMemo(() => {
-    const sphereData = [...Array(40)].map((_, i) => ({
+    const sphereData = [...Array(sphereCount)].map((_, i) => ({
       position: [
         (Math.random() - 0.5) * 35,
         (Math.random() - 0.5) * 35,
@@ -169,7 +170,7 @@ function Spheres() {
     allSpheresRef.current = sphereData.map(() => ({}))
 
     return sphereData
-  }, [baseScale])
+  }, [baseScale, sphereCount])
 
   return (
     <>

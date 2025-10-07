@@ -969,7 +969,14 @@ header {
   line-height: 1.8;
   margin-bottom: 20px;
   color: var(--text-color);
-  color: var(--text-color);
+}
+
+.ci-description .highlight {
+  font-weight: 700;
+  color: var(--primary-color);
+  background: linear-gradient(120deg, rgba(122, 132, 92, 0.15) 0%, rgba(194, 184, 163, 0.15) 100%);
+  padding: 2px 8px;
+  border-radius: 4px;
 }
 
 .ci-list {
@@ -1142,6 +1149,28 @@ header {
   margin-bottom: 30px;
 }
 
+.contact-info-box {
+  margin: 30px auto 50px auto;
+  padding: 40px;
+  background: linear-gradient(135deg, var(--light-color) 0%, rgba(194, 184, 163, 0.15) 100%);
+  border: 1px solid var(--accent-color);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(44, 44, 44, 0.08);
+  transition: var(--transition);
+}
+
+.contact-info-box:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.contact-subtitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
 .contact-description {
   font-size: 1.1rem;
   color: var(--text-color);
@@ -1151,18 +1180,21 @@ header {
 
 .contact-info-list {
   list-style: none;
-  margin: 30px 0 50px 0;
+  margin: 0;
   padding: 0;
-  display: inline-block;
   text-align: left;
 }
 
 .contact-info-list li {
   font-size: 1rem;
   color: var(--text-color);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   padding-left: 20px;
   position: relative;
+}
+
+.contact-info-list li:last-child {
+  margin-bottom: 0;
 }
 
 .contact-info-list li::before {

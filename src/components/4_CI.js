@@ -15,6 +15,38 @@ const CI = () => {
 
           <div className="ci-section-block">
             <h3 className="ci-subtitle">
+              <span className="vertical-line"></span> Our Name
+            </h3>
+            <p className="ci-description">
+              PTAH는 이집트 신화에 등장하는 창조의 신 '프타(Ptah)'에서 따왔습니다.
+              프타는 장인과 예술가의 보호신이자 모든 기술의 위대한 발명가로,
+              심장(생각)과 혀(말)를 통해 우주와 만물을 창조했다고 전해집니다.
+            </p>
+            <p className="ci-description">
+              멤피스 신화에서 프타의 혀로부터 이름이 불려질 때 세계의 만물이 드러나고 생명을 얻었듯이,
+              우리는 <span className="highlight">기술과 예술</span>을 통해 새로운 경험과 가치를 창조합니다.
+              <span className="highlight">창조와 예술</span>, 그리고 <span className="highlight">혁신</span>의 정신을 담은 이름입니다.
+            </p>
+          </div>
+
+          <div className="ci-section-block">
+            <h3 className="ci-subtitle">
+              <span className="vertical-line"></span> What We Do
+            </h3>
+            <p className="ci-description">
+              첨단 기술과 예술적 감각의 결합을 통해 모던하면서도 화려한 미디어 아트 전시를 구현합니다.
+            </p>
+            <ul className="ci-list">
+              <li><strong>인터랙티브 미디어 아트 개발</strong> - 관객의 참여로 완성되는 살아있는 작품을 만듭니다.</li>
+              <li><strong>디지털 전시 시스템 구축</strong> - 알고리즘과 데이터 시각화를 통해 깊이 있는 예술 기반 시스템을 설계합니다.</li>
+              <li><strong>실감형 XR/AR 콘텐츠 설계</strong> - 현실과 가상을 넘나드는 경계 없는 경험을 선사합니다.</li>
+              <li>데이터 시각화 및 예술기반 시스템 개발</li>
+              <li>공간 인터페이스 및 UX 디자인</li>
+            </ul>
+          </div>
+
+          <div className="ci-section-block">
+            <h3 className="ci-subtitle">
               <span className="vertical-line"></span> Symbol Meaning
             </h3>
             <p className="ci-description">
@@ -53,22 +85,6 @@ const CI = () => {
               <div className="color-sample light"></div>
               <div className="color-sample text"></div>
             </div>
-          </div>
-
-          <div className="ci-section-block">
-            <h3 className="ci-subtitle">
-              <span className="vertical-line"></span> What We Do
-            </h3>
-            <p className="ci-description">
-              첨단 기술과 예술적 감각의 결합을 통해 모던하면서도 화려한 미디어 아트 전시를 구현합니다.
-            </p>
-            <ul className="ci-list">
-              <li><strong>인터랙티브 미디어 아트 개발</strong> - 관객의 참여로 완성되는 살아있는 작품을 만듭니다.</li>
-              <li><strong>디지털 전시 시스템 구축</strong> - 알고리즘과 데이터 시각화를 통해 깊이 있는 예술 기반 시스템을 설계합니다.</li>
-              <li><strong>실감형 XR/AR 콘텐츠 설계</strong> - 현실과 가상을 넘나드는 경계 없는 경험을 선사합니다.</li>
-              <li>데이터 시각화 및 예술기반 시스템 개발</li>
-              <li>공간 인터페이스 및 UX 디자인</li>
-            </ul>
           </div>
 
           <div className="ci-section-block">

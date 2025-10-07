@@ -2,68 +2,68 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ptahlabs.co.kr/</loc>
-    <lastmod>2025-10-03</lastmod>
+    <lastmod>2025-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://ptahlabs.co.kr/#portfolio</loc>
-    <lastmod>2025-10-03</lastmod>
+    <lastmod>2025-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ptahlabs.co.kr/#ci</loc>
-    <lastmod>2025-10-03</lastmod>
+    <lastmod>2025-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ptahlabs.co.kr/#contact</loc>
-    <lastmod>2025-10-03</lastmod>
+    <lastmod>2025-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ptahlabs.co.kr/#/project/2024_Busan_Democracy</loc>
-    <lastmod>2024-11-20</lastmod>
+    <lastmod>2025-10-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://ptahlabs.co.kr/#/project/2024_Jecheon_Jummal</loc>
-    <lastmod>2024-10-15</lastmod>
+    <lastmod>2025-10-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://ptahlabs.co.kr/#/project/2024_Wonju_ScienceMuseum</loc>
-    <lastmod>2024-09-30</lastmod>
+    <lastmod>2025-10-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://ptahlabs.co.kr/#/project/2025_Gyeongju_Munmu</loc>
-    <lastmod>2025-01-25</lastmod>
+    <lastmod>2025-10-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://ptahlabs.co.kr/#/project/2025_Wonju_Sogeumsan</loc>
-    <lastmod>2025-01-20</lastmod>
+    <lastmod>2025-10-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://ptahlabs.co.kr/#/project/Solution_BeaconDocent</loc>
-    <lastmod>2024-12-01</lastmod>
+    <lastmod>2025-10-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://ptahlabs.co.kr/#/project/Solution_PhotoBooth</loc>
-    <lastmod>2024-12-01</lastmod>
+    <lastmod>2025-10-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
 </urlset>
