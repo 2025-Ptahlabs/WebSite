@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [projectsData, setProjectsData] = useState([]);
   const [tagsData, setTagsData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -104,6 +105,16 @@ const Portfolio = () => {
     return category;
   };
 
+  const handleCategorySelect = (category) => {
+    if (category === 'all') {
+      setSelectedCategory(null);
+      setActiveFilter('all');
+    } else {
+      setSelectedCategory(category);
+      setActiveFilter('all'); // 카테고리 변경 시 필터 초기화
+    }
+  };
+
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
   };
@@ -133,41 +144,45 @@ const Portfolio = () => {
         <h2 className="section-title">포트폴리오</h2>
 
         <div className="portfolio-filter">
-          {/* 전체 버튼 */}
-          <button
-            className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
-            onClick={() => handleFilterChange('all')}
-          >
-            전체
-          </button>
+          {/* 1단계: 카테고리 선택 */}
+          <div className="filter-categories">
+            <button
+              className={`category-btn ${!selectedCategory ? 'active' : ''}`}
+              onClick={() => handleCategorySelect('all')}
+            >
+              전체
+            </button>
+            {Object.keys(tagsByCategory).map((category) => (
+              <button
+                key={category}
+                className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
+                onClick={() => handleCategorySelect(category)}
+              >
+                {getCategoryName(category)}
+              </button>
+            ))}
+          </div>
 
-          {/* 카테고리별 필터 */}
-          {Object.entries(tagsByCategory).map(([category, tags]) => {
-            // 태그 개수에 따른 애니메이션 속도 계산 (태그당 4초, 최소 20초)
-            const duration = Math.max(20, tags.length * 4);
-
-            return (
-              <div key={category} className="filter-category">
-                <span className="category-label">{getCategoryName(category)}</span>
-                <div className="filter-category-scroll-wrapper">
-                  <div
-                    className="filter-category-scroll"
-                    style={{ animationDuration: `${duration}s` }}
-                  >
-                    {[...tags, ...tags, ...tags].map((tag, index) => (
-                      <button
-                        key={`${tag}-${index}`}
-                        className={`filter-btn ${activeFilter === tag ? 'active' : ''}`}
-                        onClick={() => handleFilterChange(tag)}
-                      >
-                        {getTagLabel(tag)}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {/* 2단계: 선택된 카테고리의 세부 태그 */}
+          {selectedCategory && tagsByCategory[selectedCategory] && (
+            <div className="filter-tags">
+              <button
+                className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
+                onClick={() => handleFilterChange('all')}
+              >
+                전체
+              </button>
+              {tagsByCategory[selectedCategory].map((tag) => (
+                <button
+                  key={tag}
+                  className={`filter-btn ${activeFilter === tag ? 'active' : ''}`}
+                  onClick={() => handleFilterChange(tag)}
+                >
+                  {getTagLabel(tag)}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="portfolio-grid">

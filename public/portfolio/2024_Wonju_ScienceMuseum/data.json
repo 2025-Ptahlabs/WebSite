@@ -6,8 +6,8 @@
     "science",
     "interactive"
   ],
-  "images": ["title"],
-  "thumbnail": "title",
+  "images": ["Title.jpg"],
+  "thumbnail": "Title.jpg",
   "description": "의료 과학을 주제로 한 인터랙티브 전시관",
   "descriptionTitle": "원주 의료 과학관",
   "detailedDescription": [
@@ -17,11 +17,22 @@
   "year": "2024",
   "location": "원주, 대한민국",
   "country": "KR",
-  "lastmod": "2025-10-07",
+  "lastmod": "2025-10-09",
   "exhibits": [
     {
+      "title": "비콘 도슨트 시스템",
+      "description": "전시물에 가까이 다가가면 자동으로 설명이 재생되는 비콘 기반 전시 안내 시스템입니다.\n\n관람객의 스마트폰으로 위치 기반 음성 및 영상 해설을 제공하여 자연스러운 관람 경험을 선사합니다.",
+      "tags": [
+        "beacon",
+        "docent",
+        "mobile",
+        "IoT"
+      ],
+      "images": ["BeaconDocent.jpg"]
+    },
+    {
       "title": "암진단 슬라이딩 비전",
-      "description": "슬라이딩 비전 기술로 암의 진행 과정과 진단 방법을 시각적으로 학습하는 정보 키오스크",
+      "description": "슬라이딩 비전 기술로 암의 진행 과정과 진단 방법을 시각적으로 학습하는 정보 키오스크입니다.\n\n화면을 슬라이드하며 단계별로 암의 발생과 진단 과정을 이해할 수 있습니다.",
       "tags": [
         "kiosk",
         "information",
@@ -31,9 +42,10 @@
     },
     {
       "title": "뇌 구조 슬라이딩 비전",
-      "description": "슬라이딩 비전으로 뇌의 구조와 기능을 탐험하는 인터랙티브 정보 전시",
+      "description": "터치 키오스크에서 뇌의 특정 부위를 터치하면 슬라이딩 비전이 자동으로 그 위치로 이동하며, 해당 부위에 조명이 켜지는 인터랙티브 전시입니다.\n\n뇌의 각 부위와 기능을 시각적으로 탐험하며 상세하게 배울 수 있습니다.",
       "tags": [
         "kiosk",
+        "touchscreen",
         "information",
         "interactive"
       ],
@@ -41,13 +53,23 @@
     },
     {
       "title": "펜데믹 시뮬레이션 게임",
-      "description": "인터랙티브 프로젝터를 활용한 게임형 감염병 확산 시뮬레이션 체험",
+      "description": "3명이 함께 즐기는 멀티플레이 감염병 확산 시뮬레이션 게임입니다.\n\n메인 스크린이 서버 역할을 하며 바닥 화면과 로컬 네트워크로 연동되어, 플레이어들의 움직임에 따라 실시간으로 감염병 전파 경로가 시뮬레이션됩니다.",
       "tags": [
         "game",
         "simulation",
-        "interactive"
+        "interactive",
+        "multi-player",
+        "local-network"
       ],
       "images": ["2_4.jpg"]
+    }
+  ],
+
+  "relatedProjects": [
+    {
+      "id": "Solution_BeaconDocent",
+      "title": "비콘 도슨트 솔루션",
+      "description": "솔루션 자세히 보기"
     }
   ]
 }

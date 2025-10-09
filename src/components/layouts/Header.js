@@ -24,12 +24,54 @@ const Header = () => {
       setActiveSection(current);
 
       const header = document.querySelector('header');
-      if (window.scrollY > 50) {
-        header.style.padding = '5px 0';
-        header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-      } else {
+      const scrollY = window.scrollY;
+      const fadeStart = 100;
+      const fadeEnd = 300;
+
+      // 헤더 페이드 인/아웃
+      if (scrollY < fadeStart) {
+        // Hero 영역: 헤더 숨김
         header.style.padding = '';
         header.style.boxShadow = '';
+        header.style.opacity = '0';
+        header.style.transform = 'translateY(-20px)';
+      } else if (scrollY >= fadeStart && scrollY <= fadeEnd) {
+        // 전환 구간: 점진적으로 나타남
+        const progress = (scrollY - fadeStart) / (fadeEnd - fadeStart);
+        header.style.padding = '5px 0';
+        header.style.boxShadow = `0 5px 20px rgba(0, 0, 0, ${0.1 * progress})`;
+        header.style.opacity = progress.toString();
+        header.style.transform = `translateY(${-20 * (1 - progress)}px)`;
+      } else {
+        // 완전히 표시
+        header.style.padding = '5px 0';
+        header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+        header.style.opacity = '1';
+        header.style.transform = 'translateY(0)';
+      }
+
+      // Hero-Portfolio 블렌딩 효과
+      const heroSection = document.querySelector('.hero');
+      const portfolioSection = document.querySelector('.portfolio');
+
+      if (heroSection && portfolioSection) {
+        const blendStart = 150;
+        const blendEnd = 350;
+
+        if (scrollY < blendStart) {
+          // 블렌딩 없음
+          heroSection.style.setProperty('--blend-opacity', '0');
+          portfolioSection.style.setProperty('--blend-opacity', '0');
+        } else if (scrollY >= blendStart && scrollY <= blendEnd) {
+          // 점진적 블렌딩
+          const blendProgress = (scrollY - blendStart) / (blendEnd - blendStart);
+          heroSection.style.setProperty('--blend-opacity', blendProgress.toString());
+          portfolioSection.style.setProperty('--blend-opacity', blendProgress.toString());
+        } else {
+          // 완전 블렌딩
+          heroSection.style.setProperty('--blend-opacity', '1');
+          portfolioSection.style.setProperty('--blend-opacity', '1');
+        }
       }
     };
 
@@ -83,6 +125,13 @@ const Header = () => {
     closeMenu();
   };
 
+  const handleCIClick = (e) => {
+    e.preventDefault();
+    router.push('/ci');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    closeMenu();
+  };
+
   return (
     <header>
       <div className="container header-container">
@@ -108,7 +157,7 @@ const Header = () => {
             <a href="/solution" className={`nav-link ${location.pathname === '/solution' ? 'active' : ''}`} onClick={handleSolutionClick}>Solution</a>
           </li>
           <li className="nav-item">
-            <a href="#ci" className={`nav-link ${activeSection === 'ci' ? 'active' : ''}`} onClick={(e) => handleSectionClick(e, 'ci')}>CI</a>
+            <a href="/ci" className={`nav-link ${location.pathname === '/ci' ? 'active' : ''}`} onClick={handleCIClick}>CI</a>
           </li>
           <li className="nav-item">
             <a href="#contact" className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`} onClick={(e) => handleSectionClick(e, 'contact')}>Contact</a>

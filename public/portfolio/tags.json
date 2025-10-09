@@ -2,65 +2,23 @@
   "categories": {
     "technology": {
       "name": "기술",
-      "color": "#4A90E2",
-      "icon": "💻"
+      "color": "#4A90E2"
     },
     "genre": {
       "name": "분야",
-      "color": "#50C878",
-      "icon": "🎭"
-    },
-    "solution": {
-      "name": "솔루션",
-      "color": "#F5A623",
-      "icon": "⚙️"
+      "color": "#50C878"
     },
     "experience": {
       "name": "체험",
-      "color": "#BD10E0",
-      "icon": "✨"
+      "color": "#BD10E0"
     }
   },
   "tags": {
-    "interactive": {
+    "_comment1": "==== 기술(Technology) ====",
+    "3d-model": {
       "category": "technology",
-      "name": "인터랙티브",
-      "description": "관객과 상호작용하는 기술"
-    },
-    "media-art": {
-      "category": "technology",
-      "name": "미디어아트",
-      "description": "디지털 미디어를 활용한 예술"
-    },
-    "kiosk": {
-      "category": "technology",
-      "name": "키오스크",
-      "description": "터치스크린 정보 시스템"
-    },
-    "beacon": {
-      "category": "technology",
-      "name": "비콘",
-      "description": "위치 기반 무선 통신"
-    },
-    "mobile": {
-      "category": "technology",
-      "name": "모바일",
-      "description": "스마트폰 앱"
-    },
-    "IoT": {
-      "category": "technology",
-      "name": "IoT",
-      "description": "사물인터넷"
-    },
-    "touchscreen": {
-      "category": "technology",
-      "name": "터치스크린",
-      "description": "터치 인터페이스"
-    },
-    "display": {
-      "category": "technology",
-      "name": "디스플레이",
-      "description": "대형 화면 시스템"
+      "name": "3D 모델링",
+      "description": "3차원 모델링"
     },
     "AR": {
       "category": "technology",
@@ -72,6 +30,128 @@
       "name": "가상현실",
       "description": "VR 기술"
     },
+    "beacon": {
+      "category": "technology",
+      "name": "비콘",
+      "description": "위치 기반 무선 통신"
+    },
+    "camera": {
+      "category": "technology",
+      "name": "카메라",
+      "description": "사진 촬영 기술"
+    },
+    "display": {
+      "category": "technology",
+      "name": "디스플레이",
+      "description": "대형 화면 시스템"
+    },
+    "information": {
+      "category": "technology",
+      "name": "정보",
+      "description": "정보 제공 시스템"
+    },
+    "interactive": {
+      "category": "technology",
+      "name": "인터랙티브",
+      "description": "관객과 상호작용하는 기술"
+    },
+    "IoT": {
+      "category": "technology",
+      "name": "IoT",
+      "description": "사물인터넷"
+    },
+    "kiosk": {
+      "category": "technology",
+      "name": "키오스크",
+      "description": "터치스크린 정보 시스템"
+    },
+    "local-network": {
+      "category": "technology",
+      "name": "로컬 네트워킹",
+      "description": "기기 간 로컬 통신"
+    },
+    "media-art": {
+      "category": "technology",
+      "name": "미디어아트",
+      "description": "디지털 미디어를 활용한 예술"
+    },
+    "mobile": {
+      "category": "technology",
+      "name": "모바일",
+      "description": "스마트폰 앱"
+    },
+    "networking": {
+      "category": "technology",
+      "name": "네트워킹",
+      "description": "네트워크 통신 기술"
+    },
+    "printer": {
+      "category": "technology",
+      "name": "프린터",
+      "description": "인쇄 출력 기능"
+    },
+    "queue": {
+      "category": "technology",
+      "name": "큐 시스템",
+      "description": "순차 처리 시스템"
+    },
+    "real-time": {
+      "category": "technology",
+      "name": "실시간",
+      "description": "실시간 처리"
+    },
+    "timeline": {
+      "category": "technology",
+      "name": "타임라인",
+      "description": "시간 흐름 시각화"
+    },
+    "touchscreen": {
+      "category": "technology",
+      "name": "터치스크린",
+      "description": "터치 인터페이스"
+    },
+    "ui/ux": {
+      "category": "technology",
+      "name": "UI/UX",
+      "description": "사용자 인터페이스"
+    },
+    "web": {
+      "category": "technology",
+      "name": "웹",
+      "description": "웹사이트 기술"
+    },
+    "docent": {
+      "category": "technology",
+      "name": "도슨트/가이드",
+      "description": "전시 안내 및 해설 시스템"
+    },
+    "photo": {
+      "category": "technology",
+      "name": "포토",
+      "description": "사진 촬영 시스템"
+    },
+    "website": {
+      "category": "technology",
+      "name": "웹사이트 제작",
+      "description": "기업/기관 웹사이트 제작"
+    },
+
+    "_comment2": "==== 분야(Genre) ====",
+    "art": {
+      "category": "genre",
+      "name": "예술",
+      "description": "순수 예술 작품"
+    },
+    "artifacts": {
+      "category": "genre",
+      "name": "유물",
+      "description": "유물 전시"
+    },
+    "culture": {
+      "category": "genre",
+      "name": "문화",
+      "description": "문화 예술 콘텐츠"
+    },
     "exhibition": {
       "category": "genre",
       "name": "전시",
@@ -82,110 +162,62 @@
       "name": "역사",
       "description": "역사 문화 콘텐츠"
     },
+    "hwarang": {
+      "category": "genre",
+      "name": "화랑",
+      "description": "화랑 테마"
+    },
     "science": {
       "category": "genre",
       "name": "과학",
       "description": "과학 교육 콘텐츠"
     },
-    "culture": {
-      "category": "genre",
-      "name": "문화",
-      "description": "문화 예술 콘텐츠"
-    },
-    "art": {
-      "category": "genre",
-      "name": "예술",
-      "description": "순수 예술 작품"
-    },
-    "cave": {
-      "category": "genre",
-      "name": "동굴",
-      "description": "동굴 테마"
-    },
-    "solution": {
-      "category": "solution",
-      "name": "솔루션",
-      "description": "판매용 솔루션"
-    },
-    "photo": {
-      "category": "solution",
-      "name": "포토",
-      "description": "사진 촬영 시스템"
-    },
-    "docent": {
-      "category": "solution",
-      "name": "도슨트",
-      "description": "전시 안내 시스템"
-    },
-    "guide": {
-      "category": "solution",
-      "name": "가이드",
-      "description": "안내 시스템"
-    },
-    "game": {
+
+    "_comment3": "==== 체험(Experience) ====",
+    "accessibility": {
       "category": "experience",
-      "name": "게임",
-      "description": "게임형 콘텐츠"
-    },
-    "simulation": {
-      "category": "experience",
-      "name": "시뮬레이션",
-      "description": "시뮬레이션 체험"
+      "name": "접근성",
+      "description": "사용 편의성"
     },
     "customization": {
       "category": "experience",
       "name": "커스터마이징",
       "description": "개인화 체험"
     },
-    "experience": {
-      "category": "experience",
-      "name": "체험",
-      "description": "직접 체험 콘텐츠"
-    },
     "education": {
       "category": "experience",
       "name": "교육",
       "description": "교육 프로그램"
     },
-    "timeline": {
-      "category": "technology",
-      "name": "타임라인",
-      "description": "시간 흐름 시각화"
-    },
-    "information": {
-      "category": "technology",
-      "name": "정보",
-      "description": "정보 제공 시스템"
-    },
-    "ui/ux": {
-      "category": "technology",
-      "name": "UI/UX",
-      "description": "사용자 인터페이스"
-    },
-    "artifacts": {
-      "category": "genre",
-      "name": "유물",
-      "description": "유물 전시"
-    },
-    "hwarang": {
-      "category": "genre",
-      "name": "화랑",
-      "description": "화랑 테마"
-    },
-    "hunting": {
+    "experience": {
       "category": "experience",
-      "name": "사냥",
-      "description": "사냥 체험"
+      "name": "체험",
+      "description": "직접 체험 콘텐츠"
+    },
+    "game": {
+      "category": "experience",
+      "name": "게임",
+      "description": "게임형 콘텐츠"
+    },
+    "multi-player": {
+      "category": "experience",
+      "name": "멀티플레이",
+      "description": "다중 사용자 체험"
     },
     "photo-zone": {
       "category": "experience",
       "name": "포토존",
       "description": "사진 촬영 공간"
     },
-    "real-time": {
-      "category": "technology",
-      "name": "실시간",
-      "description": "실시간 처리"
+    "rotation": {
+      "category": "experience",
+      "name": "360도 회전",
+      "description": "전방향 회전 체험"
+    },
+    "simulation": {
+      "category": "experience",
+      "name": "시뮬레이션",
+      "description": "시뮬레이션 체험"
     }
   }
 }

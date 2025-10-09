@@ -1,4 +1,47 @@
+import { useRouter } from 'next/router';
+
 const CI = () => {
+  const router = useRouter();
+  const isMainPage = router.pathname === '/';
+
+  if (isMainPage) {
+    // 메인 페이지용 간단 버전
+    return (
+      <section id="ci" className="ci-section ci-section-simple">
+        <div className="container">
+          <h2 className="section-title">CI</h2>
+
+          <div className="ci-content">
+            <div className="ci-logo">
+              <img
+                src="./images/logo/2x/SignColor@2x.png"
+                alt="PTAH LABS CI"
+                className="ci-logo-image"
+              />
+            </div>
+
+            <div className="ci-section-block">
+              <h3 className="ci-subtitle">
+                <span className="vertical-line"></span> PTAHLABS
+              </h3>
+              <p className="ci-description">
+                기술을 기반으로, 예술을 매개로, 사람과 공간을 연결하며,
+                사용자 경험을 우선시하고 관객과의 소통을 통해 새로운 경험을 창조합니다.
+              </p>
+              <button
+                className="btn ci-detail-btn"
+                onClick={() => router.push('/ci')}
+              >
+                CI 자세히 보기
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // CI 전용 페이지용 전체 버전
   return (
     <section id="ci" className="ci-section">
       <div className="container">

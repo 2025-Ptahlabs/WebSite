@@ -6,6 +6,11 @@ export default function Document() {
       <Head>
         <meta name="theme-color" content="#28391A" />
 
+        {/* Favicon */}
+        <link rel="icon" type="image/png" href="/images/logo/2x/SignColor@2x.png" />
+        <link rel="apple-touch-icon" href="/images/logo/2x/SignColor@2x.png" />
+        <link rel="shortcut icon" type="image/png" href="/images/logo/2x/SignColor@2x.png" />
+
         {/* Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

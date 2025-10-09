@@ -2,27 +2,63 @@
   "id": "Solution_PhotoBooth",
   "title": "포토부스 솔루션",
   "tags": [
-    "solution",
     "photo",
     "interactive",
-    "kiosk"
+    "kiosk",
+    "customization",
+    "camera",
+    "printer"
   ],
   "images": [
-    "PhotoBooth_1.png",
-    "PhotoBooth_2.png",
-    "PhotoBooth_3.png",
-    "PhotoBooth_4.png"
+    "Title.png",
+    "Camera.png",
+    "QR_Download.png",
+    "Design.png"
   ],
-  "thumbnail": "PhotoBooth_1.png",
-  "description": "전시관을 위한 포토부스 솔루션",
-  "descriptionTitle": "포토부스 솔루션",
-  "detailedDescription": [
-    "박물관, 전시관, 체험관을 위한 간편한 포토부스 솔루션입니다.",
-    "터치스크린 기반의 직관적인 UI로 누구나 쉽게 사진을 촬영할 수 있습니다. 촬영한 사진은 즉석에서 인쇄하거나 QR 코드를 통해 자신의 기기로 다운로드할 수 있습니다.",
-    "로컬 환경에서 작동하여 개인정보 보호가 철저하며, 전시 테마에 맞춘 커스텀 디자인이 가능합니다. 관람객들에게 특별한 추억을 남길 수 있는 체험형 콘텐츠입니다."
-  ],
+  "thumbnail": "Title.png",
+  "description": "전시관을 위한 맞춤형 포토부스 솔루션",
   "year": "2024",
   "location": "전국",
   "country": "KR",
-  "lastmod": "2025-10-07"
+  "lastmod": "2025-10-09",
+
+  "sections": [
+    {
+      "type": "text",
+      "title": "포토부스 솔루션",
+      "content": "박물관, 전시관, 체험관을 위한 간편한 포토부스 솔루션입니다. 웹 기술 기반으로 제작되어 가볍고 빠르게 작동하며, 터치스크린 기반의 직관적인 UI로 누구나 쉽게 사진을 촬영할 수 있습니다. 로컬 환경에서 작동하여 개인정보 보호가 철저하며, 향후 AR 필터 등 다양한 기능으로 확장 가능합니다."
+    },
+    {
+      "type": "exhibits",
+      "title": "주요 기능",
+      "items": [
+        {
+          "title": "QR 코드 다운로드",
+          "description": "촬영한 사진은 즉석에서 인쇄하거나 QR 코드로 간편하게 다운로드할 수 있습니다.\n\n로컬 핫스팟을 통해 별도의 인터넷 연결 없이 관람객의 스마트폰으로 바로 전송되어 개인정보 유출 걱정 없이 안전하게 이용할 수 있습니다.",
+          "tags": ["photo", "mobile", "local-network"],
+          "images": ["QR_Download.png"]
+        },
+        {
+          "title": "관리자 시스템",
+          "description": "전시 테마에 맞춰 테마 컬러와 프레임을 자유롭게 교체할 수 있는 관리자 시스템을 제공합니다.\n\n시즌별, 시간별로 디자인을 변경할 수 있어 특별 전시나 이벤트 기간에 맞춤형 포토존을 운영할 수 있습니다.",
+          "tags": ["customization", "ui/ux"],
+          "images": ["Design.png"]
+        },
+        {
+          "title": "간편한 촬영 및 인쇄",
+          "description": "직관적인 터치 인터페이스로 누구나 쉽게 사진을 촬영할 수 있습니다.\n\n촬영 즉시 현장에서 인쇄되어 관람객들에게 특별한 추억을 남길 수 있는 체험형 콘텐츠입니다.",
+          "tags": ["photo", "kiosk", "experience", "camera", "printer"],
+          "images": ["Camera.png"]
+        }
+      ]
+    }
+  ],
+
+  "relatedProjects": [
+    {
+      "id": "2024_Jecheon_Jummal",
+      "title": "제천 점말동굴 전시",
+      "description": "포토부스 솔루션 적용 사례"
+    }
+  ]
 }

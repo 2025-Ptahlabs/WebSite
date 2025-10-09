@@ -2,8 +2,8 @@
 
 **프로젝트명**: PTAHLABS 공식 웹사이트
 **개발 기간**: 2025년 1월
-**최종 업데이트**: 2025년 10월 2일 (태그 시스템 추가)
-**기술 스택**: React, React Router, GitHub Pages
+**최종 업데이트**: 2025년 10월 9일 (Next.js 마이그레이션 & 섹션 기반 포맷 시스템)
+**기술 스택**: Next.js, React, GitHub Pages
 
 ---
 
@@ -41,12 +41,12 @@ PTAHLABS는 미디어아트와 디지털 전시 솔루션 전문 기업의 공�
 ## 🛠 기술 스택
 
 ### Frontend
+- **Next.js** 15.5.4 (Static Export)
 - **React** 19.1.0
-- **React Router DOM** 7.8.2 (HashRouter)
 - **CSS3** (순수 CSS, no framework)
 
 ### 빌드 & 배포
-- **React Scripts** 5.0.1
+- **Next.js Static Export** (SSG)
 - **GitHub Pages**
 - **GitHub Actions** (자동 배포)
 
@@ -63,6 +63,13 @@ WebSite/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml          # GitHub Actions 배포 설정
+├── pages/                      # Next.js 페이지 (SSG)
+│   ├── _app.js                 # App 래퍼
+│   ├── _document.js            # HTML 문서 구조
+│   ├── index.js                # 메인 페이지
+│   ├── solution.js             # 솔루션 페이지
+│   └── project/
+│       └── [projectId].js      # 동적 프로젝트 상세 페이지
 ├── public/
 │   ├── images/
 │   │   └── logo/               # 로고 이미지
@@ -76,7 +83,6 @@ WebSite/
 │   │   ├── index.json          # 프로젝트 목록 (자동 생성)
 │   │   ├── tags.json           # 태그 정의 및 카테고리
 │   │   └── README.md           # 간단 가이드
-│   ├── index.html              # HTML 템플릿 (SEO 메타 태그 포함)
 │   ├── sitemap.xml             # 검색 엔진 sitemap (자동 생성)
 │   └── robots.txt              # 크롤러 설정
 ├── scripts/
@@ -89,17 +95,18 @@ WebSite/
 │   │   ├── layouts/
 │   │   │   ├── Header.js       # 네비게이션 헤더
 │   │   │   └── Footer.js       # 푸터
+│   │   ├── sections/
+│   │   │   └── SectionRenderer.js  # 섹션 렌더러 컴포넌트
 │   │   ├── 1_Hero.js           # 메인 배너
 │   │   ├── 2_Portfolio.js      # 포트폴리오 섹션
+│   │   ├── 3_Solution.js       # 솔루션 섹션
 │   │   ├── 4_CI.js             # CI 소개 섹션
 │   │   ├── 5_Contact.js        # 연락처 섹션
-│   │   └── ProjectDetail.js    # 프로젝트 상세 페이지
-│   ├── data/                   # (더 이상 사용 안 함)
-│   ├── App.js                  # 라우팅 설정
-│   ├── App.css                 # 전체 스타일
-│   └── index.js                # React 엔트리 포인트
+│   │   └── ProjectDetail.js    # 프로젝트 상세 페이지 컴포넌트
+│   └── App.css                 # 전체 스타일
+├── next.config.js              # Next.js 설정 (static export)
 ├── SEO_가이드.md               # SEO 최적화 가이드
-├── Claude.md                   # 이 문서
+├── CLAUDE.md                   # 이 문서
 ├── README.md                   # 배포 가이드
 └── package.json                # 의존성 및 스크립트
 
@@ -122,18 +129,31 @@ WebSite/
 - 프로젝트 클릭 시 상세 페이지로 이동
 - 위치 정보 표시
 
-### 3. 라우팅
-- **HashRouter** 사용 (GitHub Pages 호환)
-- 메인 페이지: `/`
-- 프로젝트 상세: `/#/project/:projectId`
+### 3. 섹션 기반 콘텐츠 시스템
+- **5가지 섹션 타입** 지원으로 자유로운 레이아웃 구성
+  - `text`: 텍스트 섹션
+  - `image-gallery`: 이미지 슬라이더 (좌우 네비게이션)
+  - `text-image`: 텍스트+이미지 조합 (image-left, image-right, image-top 레이아웃)
+  - `text-image-sequence`: 여러 텍스트+이미지 쌍 반복
+  - `exhibits`: 전시물 카드 그리드
+- **SectionRenderer 컴포넌트**: 재사용 가능한 섹션 렌더링 로직
+- JSON 기반 콘텐츠 관리로 비개발자도 쉽게 편집 가능
 
-### 4. SEO 최적화
+### 4. 라우팅
+- **Next.js 파일 기반 라우팅** (정적 내보내기)
+- 메인 페이지: `/`
+- 솔루션 페이지: `/solution/`
+- 프로젝트 상세: `/project/[projectId]/`
+- SEO 친화적 URL (# 없음)
+
+### 5. SEO 최적화
+- **Next.js SSG로 완전한 HTML 사전 렌더링**
 - 메타 태그 (description, keywords, Open Graph, Twitter Card)
 - Schema.org Structured Data (JSON-LD)
 - Sitemap.xml 자동 생성
 - robots.txt 설정
 
-### 5. 자동 배포
+### 6. 자동 배포
 - GitHub Actions를 통한 main 브랜치 자동 배포
 - 프로젝트 인덱스 빌드 시 자동 생성
 - Sitemap 빌드 시 자동 생성
@@ -156,16 +176,23 @@ npm install
 ### 개발 서버 실행
 
 ```bash
-npm start
+npm run dev
 ```
-- 로컬 서버: http://localhost:3000
+- 로컬 서버: http://localhost:3000 (포트 충돌 시 자동으로 3001 사용)
 
 ### 빌드
 
 ```bash
 npm run build
 ```
-- 프로젝트 인덱스와 Sitemap이 자동으로 생성되고, build 폴더에 정적 파일 생성
+- 프로젝트 인덱스와 Sitemap이 자동으로 생성되고, out 폴더에 정적 HTML 생성
+
+### 빌드 결과 미리보기
+
+```bash
+npm start
+```
+- out 폴더를 로컬 서버로 실행 (빌드 후 테스트용)
 
 ### Sitemap 수동 생성
 
@@ -191,8 +218,8 @@ GitHub Actions가 자동으로:
 1. 의존성 설치
 2. 프로젝트 인덱스 생성 (index.json)
 3. Sitemap 생성
-4. 프로젝트 빌드
-5. gh-pages 브랜치에 배포
+4. Next.js 빌드 (SSG)
+5. out 폴더를 gh-pages 브랜치에 배포
 
 ### 수동 배포
 
@@ -233,6 +260,17 @@ npm run deploy
 ---
 
 ## 🔧 유지보수 가이드
+
+### 향후 개선 작업 (TODO)
+
+**전시물 태그 자동 병합 기능**
+- 현재: 프로젝트 상단 tags는 수동으로 입력
+- 개선: exhibits 섹션 내 전시물들의 tags를 자동으로 상단 프로젝트 tags에 포함
+- 작업 방법:
+  1. 모든 프로젝트 data.json 일괄 업데이트 스크립트 작성
+  2. ProjectDetail.js에서 동적으로 태그 병합 로직 추가
+  3. 중복 제거 및 카테고리별 정렬
+- 우선순위: 중간 (프로젝트 10개 이상 누적 시 진행)
 
 ### 새 프로젝트 추가하기 (비개발자용)
 
@@ -344,13 +382,15 @@ git push origin main
 
 ## 🐛 알려진 이슈
 
-### HashRouter 사용
-- URL에 `#` 포함 (예: `https://ptahlabs.co.kr/#/project/xxx`)
-- SEO에 약간 불리하지만, GitHub Pages에서 가장 안정적
+### Next.js Static Export 제한사항
+- **이미지 최적화 비활성화**: `images.unoptimized: true` 설정 필요
+- **서버 API 사용 불가**: 모든 데이터는 정적 파일로 관리 (public/portfolio/)
+- **ISR 사용 불가**: Static Export 모드에서는 Incremental Static Regeneration 미지원
 
-### 대안
-- BrowserRouter + 404.html 리다이렉트 (더 복잡함)
-- 커스텀 도메인 + 서버 설정 (추천)
+### GitHub Pages 특성
+- 빌드 후 배포까지 약 1-2분 소요
+- gh-pages 브랜치를 통한 배포
+- 커스텀 도메인 설정 가능
 
 ---
 
@@ -363,6 +403,21 @@ git push origin main
 ---
 
 ## 📝 변경 이력
+
+### 2025-10-09
+- **Next.js 마이그레이션 완료**
+- React SPA → Next.js Static Export (SSG) 전환
+- SEO 개선: 모든 페이지 HTML 사전 렌더링
+- HashRouter 제거, Next.js 파일 기반 라우팅 적용
+- pages/ 폴더 구조로 전환 (_app.js, _document.js, index.js, solution.js, project/[projectId].js)
+- 모든 컴포넌트에서 useRouter (next/router)로 변경
+- 이미지 경로를 절대 경로로 변경 (/portfolio/)
+- Sitemap URL에서 # 제거
+- GitHub Actions 배포 스크립트 업데이트 (out 폴더 배포)
+- **섹션 렌더링 로직 컴포넌트 분리**
+- src/components/sections/SectionRenderer.js 생성
+- ProjectDetail.js 리팩토링 (150+ 줄 → 컴포넌트 사용)
+- 코드 재사용성 및 유지보수성 향상
 
 ### 2025-10-02 (오후)
 - **태그 시스템 중앙 관리**
@@ -405,8 +460,8 @@ git push origin main
 
 ## 🎓 참고 자료
 
+- [Next.js 공식 문서](https://nextjs.org/docs)
 - [React 공식 문서](https://react.dev/)
-- [React Router 문서](https://reactrouter.com/)
 - [GitHub Pages 가이드](https://pages.github.com/)
 - [SEO 가이드](./SEO_가이드.md)
 - [배포 가이드](./README.md)
@@ -414,4 +469,4 @@ git push origin main
 ---
 
 **이 문서는 Claude AI가 작성했습니다.**
-**최종 검토**: 2025년 10월 2일
+**최종 검토**: 2025년 10월 9일

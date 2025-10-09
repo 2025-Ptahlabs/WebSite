@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import SectionRenderer from './sections/SectionRenderer';
 
 const ProjectDetail = () => {
   const router = useRouter();
@@ -96,154 +97,6 @@ const ProjectDetail = () => {
     return tag;
   };
 
-  // 섹션 렌더링
-  const renderSection = (section, index) => {
-    switch (section.type) {
-      case 'text':
-        return (
-          <div key={index} className="section section-text">
-            {section.title && <h3>{section.title}</h3>}
-            <p>{section.content}</p>
-          </div>
-        );
-
-      case 'image-gallery':
-        const galleryIndex = galleryIndexes[index] || 0;
-        return (
-          <div key={index} className="section section-gallery">
-            {section.title && <h3>{section.title}</h3>}
-            <div className="gallery-wrapper">
-              <div className="gallery-main-image">
-                <img src={section.images[galleryIndex]} alt={`${section.title} - ${galleryIndex + 1}`} />
-              </div>
-              {section.images.length > 1 && (
-                <div className="gallery-controls">
-                  <button
-                    className="gallery-btn prev"
-                    onClick={() => setGalleryIndexes(prev => ({
-                      ...prev,
-                      [index]: galleryIndex === 0 ? section.images.length - 1 : galleryIndex - 1
-                    }))}
-                  >
-                    ‹
-                  </button>
-                  <span className="gallery-counter">
-                    {galleryIndex + 1} / {section.images.length}
-                  </span>
-                  <button
-                    className="gallery-btn next"
-                    onClick={() => setGalleryIndexes(prev => ({
-                      ...prev,
-                      [index]: galleryIndex === section.images.length - 1 ? 0 : galleryIndex + 1
-                    }))}
-                  >
-                    ›
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-        );
-
-      case 'text-image':
-        return (
-          <div key={index} className={`section section-text-image layout-${section.layout || 'image-right'}`}>
-            {section.title && <h3>{section.title}</h3>}
-            <div className="text-image-content">
-              <div className="text-part">
-                <p>{section.text}</p>
-              </div>
-              <div className="image-part">
-                <img src={section.image} alt={section.title || 'Section image'} />
-              </div>
-            </div>
-          </div>
-        );
-
-      case 'text-image-sequence':
-        return (
-          <div key={index} className="section section-sequence">
-            {section.title && <h3>{section.title}</h3>}
-            {section.items.map((item, itemIndex) => (
-              <div key={itemIndex} className={`sequence-item layout-${item.layout || 'image-right'}`}>
-                <div className="text-part">
-                  <p>{item.text}</p>
-                </div>
-                <div className="image-part">
-                  <img src={item.image} alt={`${section.title} - ${itemIndex + 1}`} />
-                </div>
-              </div>
-            ))}
-          </div>
-        );
-
-      case 'exhibits':
-        return (
-          <div key={index} className="section section-exhibits">
-            {section.title && <h3>{section.title}</h3>}
-            <div className="exhibits-grid">
-              {section.items.map((exhibit, exhibitIndex) => {
-                const currentImageIndex = exhibitImageIndexes[`${index}-${exhibitIndex}`] || 0;
-                return (
-                  <div key={exhibitIndex} className="exhibit-card">
-                    {exhibit.images && exhibit.images.length > 0 && (
-                      <div className="exhibit-image-wrapper">
-                        <div className="exhibit-image-container">
-                          <img
-                            src={exhibit.images[currentImageIndex]}
-                            alt={`${exhibit.title} - ${currentImageIndex + 1}`}
-                          />
-                        </div>
-                        {exhibit.images.length > 1 && (
-                          <div className="exhibit-image-controls">
-                            <button
-                              className="exhibit-image-btn prev"
-                              onClick={() => setExhibitImageIndexes(prev => ({
-                                ...prev,
-                                [`${index}-${exhibitIndex}`]: currentImageIndex === 0 ? exhibit.images.length - 1 : currentImageIndex - 1
-                              }))}
-                            >
-                              ‹
-                            </button>
-                            <span className="exhibit-image-counter">
-                              {currentImageIndex + 1} / {exhibit.images.length}
-                            </span>
-                            <button
-                              className="exhibit-image-btn next"
-                              onClick={() => setExhibitImageIndexes(prev => ({
-                                ...prev,
-                                [`${index}-${exhibitIndex}`]: currentImageIndex === exhibit.images.length - 1 ? 0 : currentImageIndex + 1
-                              }))}
-                            >
-                              ›
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                    <div className="exhibit-content">
-                      <h4>{exhibit.title}</h4>
-                      <p>{exhibit.description}</p>
-                      {exhibit.tags && (
-                        <div className="exhibit-tags">
-                          {exhibit.tags.map(tag => (
-                            <span key={tag} className="exhibit-tag">#{getTagLabel(tag)}</span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        );
-
-      default:
-        return null;
-    }
-  };
-
   if (loading) {
     return (
       <div className="project-detail-container">
@@ -300,9 +153,42 @@ const ProjectDetail = () => {
 
           {/* 새로운 섹션 시스템 */}
           {project.sections && project.sections.length > 0 ? (
-            <div className="project-sections">
-              {project.sections.map((section, index) => renderSection(section, index))}
-            </div>
+            <>
+              <div className="project-sections">
+                {project.sections.map((section, index) => (
+                  <SectionRenderer
+                    key={index}
+                    section={section}
+                    index={index}
+                    galleryIndexes={galleryIndexes}
+                    setGalleryIndexes={setGalleryIndexes}
+                    exhibitImageIndexes={exhibitImageIndexes}
+                    setExhibitImageIndexes={setExhibitImageIndexes}
+                    getTagLabel={getTagLabel}
+                  />
+                ))}
+              </div>
+
+              {/* 관련 프로젝트 */}
+              {project.relatedProjects && project.relatedProjects.length > 0 && (
+                <div className="related-projects">
+                  <h3>적용 사례</h3>
+                  <div className="related-projects-grid">
+                    {project.relatedProjects.map((relatedProject, index) => (
+                      <button
+                        key={index}
+                        className="related-project-btn"
+                        onClick={() => router.push(`/project/${relatedProject.id}`)}
+                      >
+                        <h4>{relatedProject.title}</h4>
+                        <p>{relatedProject.description}</p>
+                        <span className="arrow">→</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
           ) : (
             // 기존 방식 호환
             <>
@@ -396,6 +282,26 @@ const ProjectDetail = () => {
                         </div>
                       );
                     })}
+                  </div>
+                </div>
+              )}
+
+              {/* 관련 프로젝트 */}
+              {project.relatedProjects && project.relatedProjects.length > 0 && (
+                <div className="related-projects">
+                  <h3>적용 사례</h3>
+                  <div className="related-projects-grid">
+                    {project.relatedProjects.map((relatedProject, index) => (
+                      <button
+                        key={index}
+                        className="related-project-btn"
+                        onClick={() => router.push(`/project/${relatedProject.id}`)}
+                      >
+                        <h4>{relatedProject.title}</h4>
+                        <p>{relatedProject.description}</p>
+                        <span className="arrow">→</span>
+                      </button>
+                    ))}
                   </div>
                 </div>
               )}
