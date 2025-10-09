@@ -9,6 +9,10 @@ permissions:                        # GitHub Actions bot 권한 설정
   pages: write                      # GitHub Pages에 쓰기 권한 부여
   id-token: write                   # OIDC 토큰 발급 권한
 
+concurrency:                        # 동시 실행 제어
+  group: pages                      # 'pages' 그룹으로 묶음
+  cancel-in-progress: false         # 진행 중인 작업은 취소하지 않고 대기
+
 jobs:                               # 실행할 작업들 정의
   build-and-deploy:                 # job 이름
     runs-on: ubuntu-latest          # Ubuntu 최신 버전 가상머신에서 실행
