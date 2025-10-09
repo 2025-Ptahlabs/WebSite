@@ -83,6 +83,9 @@ const Header = () => {
       }
     };
 
+    // 페이지 로드 시 초기 상태 설정
+    handleScroll();
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [location.pathname]);
