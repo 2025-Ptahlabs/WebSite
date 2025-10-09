@@ -418,6 +418,29 @@ git push origin main
 - src/components/sections/SectionRenderer.js 생성
 - ProjectDetail.js 리팩토링 (150+ 줄 → 컴포넌트 사용)
 - 코드 재사용성 및 유지보수성 향상
+- **CSS 파일 컴포넌트별 분리**
+- src/styles/ 폴더 생성 및 CSS 모듈화
+- common.css: 기본 스타일 및 CSS 변수
+- Header.css: 헤더 네비게이션
+- Hero.css: 히어로 섹션 (블렌딩 효과 포함)
+- Portfolio.css: 포트폴리오 필터링 및 그리드
+- ProjectDetail.css: 프로젝트 상세 페이지 (섹션 렌더링 포함)
+- CI.css: CI 섹션
+- Contact.css: 연락처 섹션
+- Footer.css: 푸터 및 파트너 섹션
+- responsive.css: 미디어 쿼리
+- App.css는 @import로 모든 CSS 통합
+- 유지보수성 및 코드 가독성 향상
+- **스크롤 효과 개선**
+- Hero-Portfolio 블렌딩 효과: 150-350px 범위에서 점진적으로 나타남
+- 헤더 페이드인: 100-300px 범위에서 점진적으로 나타남
+- 스크롤 스냅 기능 추가 (scroll-snap-type: y proximity)
+- Hero와 Portfolio 섹션에서 자동으로 멈춤
+- **Hero 섹션 인터랙션 개선**
+- 3D 공들이 마우스를 따라오도록 변경 (기존: 마우스를 피함)
+- 인터랙션 범위 증가 (10 → 15)
+- 끌어당기는 힘 증가 (0.5 → 0.8)
+- 클릭 시 공들이 퍼지는 효과 추가
 
 ### 2025-10-02 (오후)
 - **태그 시스템 중앙 관리**

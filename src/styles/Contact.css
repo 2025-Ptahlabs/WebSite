@@ -1,0 +1,90 @@
+/* Contact 섹션 */
+.contact-section {
+  padding: 200px 0;
+  min-height: 100vh;
+  background: var(--light-color);
+}
+
+.contact-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+.contact-email {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.contact-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.contact-info-box {
+  margin: 30px auto 50px auto;
+  padding: 40px;
+  background: linear-gradient(135deg, var(--light-color) 0%, rgba(194, 184, 163, 0.15) 100%);
+  border: 1px solid var(--accent-color);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(44, 44, 44, 0.08);
+  transition: var(--transition);
+}
+
+.contact-info-box:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.contact-subtitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.contact-description {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 25px;
+  line-height: 1.8;
+}
+
+.contact-info-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.contact-info-list li {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 12px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.contact-info-list li:last-child {
+  margin-bottom: 0;
+}
+
+.contact-info-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.contact-address {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  line-height: 1.6;
+  text-align: center;
+}

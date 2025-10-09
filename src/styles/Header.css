@@ -1,0 +1,90 @@
+/* 헤더 네비게이션 */
+header {
+  background: rgba(250, 249, 246, 0.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(44, 44, 44, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: var(--transition);
+  border-bottom: 1px solid rgba(194, 184, 163, 0.3);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-image {
+  height: 40px;
+  width: 40px;
+  margin-right: 5px;
+}
+
+.logo span {
+  background: var(--accent-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: var(--transition);
+  padding: 12px 24px;
+  border-radius: 25px;
+  position: relative;
+}
+
+.nav-link:hover {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  color: var(--secondary-color);
+}
+
+.nav-link.active {
+  background: var(--primary-color);
+  color: var(--light-color);
+  box-shadow: var(--shadow-soft);
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.bar {
+  display: block;
+  width: 28px;
+  height: 3px;
+  margin: 6px auto;
+  background: var(--primary-color);
+  transition: var(--transition);
+  border-radius: 2px;
+}

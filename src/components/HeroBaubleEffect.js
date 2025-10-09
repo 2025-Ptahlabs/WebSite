@@ -18,7 +18,7 @@ const colors = [
   { color: "#6d7a54", emissive: "#5a6444", intensity: 0.3 }  // 미디엄 카키
 ]
 
-function Sphere({ position, velocity, scale, offset, brightness, allSpheres, index }) {
+function Sphere({ position, velocity, scale, offset, brightness, allSpheres, index, clickPos }) {
   const meshRef = useRef()
   const vel = useRef(velocity)
   const pos = useRef(position)
@@ -38,7 +38,8 @@ function Sphere({ position, velocity, scale, offset, brightness, allSpheres, ind
     pos.current[1] += vel.current[1] * delta
     pos.current[2] += vel.current[2] * delta
 
-    // 다른 공들과의 충돌 감지 (강화)
+    // 다른 공들과의 충돌 감지 (폭발 시에는 약화)
+    const collisionForce = clickPos.current.active ? 0.3 : 1.5
     allSpheres.current.forEach((other, i) => {
       if (i === index || !other.pos) return
 
@@ -49,17 +50,18 @@ function Sphere({ position, velocity, scale, offset, brightness, allSpheres, ind
       const minDist = scale + other.scale + 2.5 // idle 모션 고려하여 여유 공간 증가
 
       if (distance < minDist && distance > 0.01) {
-        // 충돌! 강하게 밀어내기
+        // 충돌! 밀어내기 (폭발 시에는 약하게)
         const overlap = minDist - distance
-        const force = overlap * 1.5 // 힘 증가
+        const force = overlap * collisionForce
         const nx = dx / distance
         const ny = dy / distance
         const nz = dz / distance
 
-        // 위치도 즉시 조정
-        pos.current[0] += nx * overlap * 0.5
-        pos.current[1] += ny * overlap * 0.5
-        pos.current[2] += nz * overlap * 0.5
+        // 위치도 즉시 조정 (폭발 시에는 약하게)
+        const posForce = clickPos.current.active ? 0.1 : 0.5
+        pos.current[0] += nx * overlap * posForce
+        pos.current[1] += ny * overlap * posForce
+        pos.current[2] += nz * overlap * posForce
 
         // 속도 변경
         vel.current[0] += nx * force
@@ -88,18 +90,43 @@ function Sphere({ position, velocity, scale, offset, brightness, allSpheres, ind
       pos.current[2] = pos.current[2] > 10 ? 10 : -10
     }
 
-    // 마우스 인터랙션 (강화)
+    // 클릭 시 폭발 효과
+    if (clickPos.current.active && clickPos.current.frame < 3) {
+      const clickX = clickPos.current.x
+      const clickY = clickPos.current.y
+      const cdx = pos.current[0] - clickX
+      const cdy = pos.current[1] - clickY
+      const clickDist = Math.sqrt(cdx * cdx + cdy * cdy)
+
+      if (clickDist < 25) {
+        // 폭발 효과: 클릭 위치에서 강하게 밀어냄
+        const explosionForce = (1 - clickDist / 25) * 30
+        vel.current[0] += (cdx / Math.max(clickDist, 0.1)) * explosionForce
+        vel.current[1] += (cdy / Math.max(clickDist, 0.1)) * explosionForce
+        vel.current[2] += (Math.random() - 0.5) * explosionForce * 0.8
+      }
+
+      // 폭발 프레임 카운터 증가
+      if (index === 0) {
+        clickPos.current.frame++
+        if (clickPos.current.frame >= 3) {
+          clickPos.current.active = false
+        }
+      }
+    }
+
+    // 마우스 인터랙션 (공들이 마우스를 따라옴)
     const mouseX = state.mouse.x * 12
     const mouseY = state.mouse.y * 12
     const dx = pos.current[0] - mouseX
     const dy = pos.current[1] - mouseY
     const distance = Math.sqrt(dx * dx + dy * dy)
 
-    if (distance < 10) {
+    if (distance < 15) {
       // 거리에 따라 힘 조절 (가까울수록 강하게)
-      const force = (1 - distance / 10) * 0.5
-      vel.current[0] += (dx / distance) * force
-      vel.current[1] += (dy / distance) * force
+      const force = (1 - distance / 15) * 0.8
+      vel.current[0] -= (dx / distance) * force
+      vel.current[1] -= (dy / distance) * force
     }
 
     // 속도 감쇠
@@ -143,7 +170,7 @@ function Sphere({ position, velocity, scale, offset, brightness, allSpheres, ind
   )
 }
 
-function Spheres() {
+function Spheres({ clickPosRef }) {
   const isMobile = window.innerWidth < 768
   const baseScale = isMobile ? 0.6 : 1.8
   const sphereCount = isMobile ? 80 : 55
@@ -175,14 +202,43 @@ function Spheres() {
   return (
     <>
       {spheres.map((sphere, i) => (
-        <Sphere key={i} {...sphere} allSpheres={allSpheresRef} index={i} />
+        <Sphere key={i} {...sphere} allSpheres={allSpheresRef} index={i} clickPos={clickPosRef} />
       ))}
     </>
   )
 }
 
 export default function HeroBaubleEffect() {
+  const clickPosRef = useRef({ active: false, x: 0, y: 0, frame: 0 })
+
+  const handleClick = (event) => {
+    // Canvas 영역 내 클릭 좌표를 3D 공간 좌표로 변환
+    const rect = event.currentTarget.getBoundingClientRect()
+    const x = ((event.clientX - rect.left) / rect.width) * 2 - 1
+    const y = -((event.clientY - rect.top) / rect.height) * 2 + 1
+
+    clickPosRef.current = {
+      active: true,
+      x: x * 12,
+      y: y * 12,
+      frame: 0
+    }
+
+    console.log('Click!', clickPosRef.current)
+  }
+
   return (
+    <div
+      onClick={handleClick}
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        cursor: 'pointer'
+      }}
+    >
     <Canvas
       shadows
       camera={{ position: [0, 0, 20], fov: 50 }}
@@ -212,7 +268,7 @@ export default function HeroBaubleEffect() {
       <pointLight position={[15, 0, 0]} intensity={1.5} color="#9ca67d" />
       <pointLight position={[-15, 0, 0]} intensity={1.5} color="#C2B8A3" />
 
-      <Spheres />
+      <Spheres clickPosRef={clickPosRef} />
 
       {/* 바닥 그림자 */}
       <ContactShadows
@@ -224,5 +280,6 @@ export default function HeroBaubleEffect() {
         color="#28391A"
       />
     </Canvas>
+    </div>
   )
 }
