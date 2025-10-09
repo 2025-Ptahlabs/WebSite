@@ -19,7 +19,9 @@
       "Bash(npm uninstall:*)",
       "Bash(del:*)",
       "Bash(rm:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(for dir in public/portfolio/*/)",
+      "Bash(do if [ -f \"$dir/data.json\" ])"
     ],
     "deny": [],
     "ask": []

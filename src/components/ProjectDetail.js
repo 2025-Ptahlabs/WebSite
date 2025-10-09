@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 const ProjectDetail = () => {
-  const { projectId } = useParams();
-  const navigate = useNavigate();
+  const router = useRouter();
+  const { projectId } = router.query;
   const [project, setProject] = useState(null);
   const [tagsData, setTagsData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -28,6 +28,15 @@ const ProjectDetail = () => {
           ...data,
           images: data.images?.map(img => `./portfolio/${projectId}/${img}`) || [],
           thumbnail: data.thumbnail ? `./portfolio/${projectId}/${data.thumbnail}` : '',
+          detailedDescription: data.detailedDescription?.map(item => {
+            if (typeof item === 'object' && item.type === 'image') {
+              return {
+                ...item,
+                src: `./portfolio/${projectId}/${item.src}`
+              };
+            }
+            return item;
+          }) || data.detailedDescription,
           exhibits: data.exhibits?.map(exhibit => ({
             ...exhibit,
             images: exhibit.images?.map(img => `./portfolio/${projectId}/${img}`) || []
@@ -69,7 +78,7 @@ const ProjectDetail = () => {
       <div className="project-detail-container">
         <div className="container">
           <h2>프로젝트를 찾을 수 없습니다.</h2>
-          <button className="btn" onClick={() => navigate('/')}>
+          <button className="btn" onClick={() => router.push('/')}>
             홈으로 돌아가기
           </button>
         </div>
@@ -83,7 +92,7 @@ const ProjectDetail = () => {
         <div className="project-detail-content">
           <div className="project-header">
             <h1 className="project-detail-title">{project.title}</h1>
-            <button className="btn-back" onClick={() => navigate('/')}>
+            <button className="btn-back" onClick={() => router.push('/')}>
               ← 포트폴리오로 돌아가기
             </button>
           </div>
@@ -115,9 +124,22 @@ const ProjectDetail = () => {
             {project.detailedDescription && (
               <div className="detailed-content">
                 {Array.isArray(project.detailedDescription) ? (
-                  project.detailedDescription.map((text, index) => (
-                    <p key={index}>{text}</p>
-                  ))
+                  project.detailedDescription.map((item, index) => {
+                    // 새로운 구조: {type: "text"|"image", content|src: "..."}
+                    if (typeof item === 'object' && item.type) {
+                      if (item.type === 'text') {
+                        return <p key={index}>{item.content}</p>;
+                      } else if (item.type === 'image') {
+                        return (
+                          <div key={index} className="detailed-image">
+                            <img src={item.src} alt={`상세 이미지 ${index + 1}`} />
+                          </div>
+                        );
+                      }
+                    }
+                    // 기존 구조 호환: 문자열
+                    return <p key={index}>{item}</p>;
+                  })
                 ) : (
                   project.detailedDescription.split('\n').map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>

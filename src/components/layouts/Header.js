@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const location = { pathname: router.pathname };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +48,7 @@ const Header = () => {
   const handleHomeClick = (e) => {
     e.preventDefault();
     if (location.pathname !== '/') {
-      navigate('/');
+      router.push('/');
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -60,7 +60,7 @@ const Header = () => {
     if (location.pathname !== '/') {
       // 다른 페이지에서 메인으로 이동 시
       window.scrollTo({ top: 0 });
-      navigate('/');
+      router.push('/');
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -78,7 +78,7 @@ const Header = () => {
 
   const handleSolutionClick = (e) => {
     e.preventDefault();
-    navigate('/solution');
+    router.push('/solution');
     window.scrollTo({ top: 0, behavior: 'smooth' });
     closeMenu();
   };

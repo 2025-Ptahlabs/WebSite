@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [projectsData, setProjectsData] = useState([]);
   const [tagsData, setTagsData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // 런타임에 프로젝트 데이터와 태그 정의 로드
   useEffect(() => {
@@ -109,7 +109,7 @@ const Portfolio = () => {
   };
 
   const handleProjectClick = (link) => {
-    navigate(link);
+    router.push(link);
   };
 
   const filteredItems = activeFilter === 'all'

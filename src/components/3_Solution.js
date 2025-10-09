@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 const Solution = () => {
   const [solutionProjects, setSolutionProjects] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // 런타임에 solution 태그 프로젝트만 로드
   useEffect(() => {
@@ -55,7 +55,7 @@ const Solution = () => {
   }, []);
 
   const handleProjectClick = (link) => {
-    navigate(link);
+    router.push(link);
   };
 
   if (loading) {
