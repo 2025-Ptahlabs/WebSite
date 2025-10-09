@@ -13,27 +13,27 @@ const Portfolio = () => {
     const loadProjects = async () => {
       try {
         // 1. 태그 정의 로드
-        const tagsRes = await fetch('./portfolio/tags.json');
+        const tagsRes = await fetch('/portfolio/tags.json');
         const tags = await tagsRes.json();
         setTagsData(tags);
 
         // 2. 프로젝트 목록 가져오기
-        const indexRes = await fetch('./portfolio/index.json');
+        const indexRes = await fetch('/portfolio/index.json');
         const projectIds = await indexRes.json();
 
         // 3. 각 프로젝트의 data.json 로드
         const projectPromises = projectIds.map(async (id) => {
-          const res = await fetch(`./portfolio/${id}/data.json`);
+          const res = await fetch(`/portfolio/${id}/data.json`);
           const data = await res.json();
 
           // 이미지 경로를 절대 경로로 변환
           return {
             ...data,
-            images: data.images?.map(img => `./portfolio/${id}/${img}`) || [],
-            thumbnail: data.thumbnail ? `./portfolio/${id}/${data.thumbnail}` : '',
+            images: data.images?.map(img => `/portfolio/${id}/${img}`) || [],
+            thumbnail: data.thumbnail ? `/portfolio/${id}/${data.thumbnail}` : '',
             exhibits: data.exhibits?.map(exhibit => ({
               ...exhibit,
-              images: exhibit.images?.map(img => `./portfolio/${id}/${img}`) || []
+              images: exhibit.images?.map(img => `/portfolio/${id}/${img}`) || []
             })) || [],
             link: `/project/${id}`
           };

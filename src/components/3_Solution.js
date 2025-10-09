@@ -11,19 +11,19 @@ const Solution = () => {
     const loadSolutions = async () => {
       try {
 
-        const indexRes = await fetch('./portfolio/index.json');
+        const indexRes = await fetch('/portfolio/index.json');
         const projectIds = await indexRes.json();
 
         const projectPromises = projectIds.map(async (id) => {
-          const res = await fetch(`./portfolio/${id}/data.json`);
+          const res = await fetch(`/portfolio/${id}/data.json`);
           const data = await res.json();
 
           // solution 태그가 있는 프로젝트만 필터링
           if (data.tags?.includes('solution')) {
             return {
               ...data,
-              images: data.images?.map(img => `./portfolio/${id}/${img}`) || [],
-              thumbnail: data.thumbnail ? `./portfolio/${id}/${data.thumbnail}` : '',
+              images: data.images?.map(img => `/portfolio/${id}/${img}`) || [],
+              thumbnail: data.thumbnail ? `/portfolio/${id}/${data.thumbnail}` : '',
               link: `/project/${id}`
             };
           }

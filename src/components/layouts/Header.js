@@ -87,7 +87,7 @@ const Header = () => {
     <header>
       <div className="container header-container">
         <a href="/" className="logo" onClick={handleHomeClick}>
-          <img src="./images/logo/2x/SignColor@2x.png" alt="PTAH LABS" className="logo-image" />
+          <img src="/images/logo/2x/SignColor@2x.png" alt="PTAH LABS" className="logo-image" />
           PTAHLABS
         </a>
 
