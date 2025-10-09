@@ -15,8 +15,8 @@
 
 .ci-logo {
   text-align: center;
-  margin-top: 60px;
-  margin-bottom: 200px;
+  margin-top: 120px;
+  margin-bottom: 80px;
 }
 
 .ci-logo-image {
@@ -33,6 +33,7 @@
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(44, 44, 44, 0.08);
   transition: var(--transition);
+  overflow: auto;
 }
 
 .ci-section-block:hover {
@@ -72,6 +73,7 @@
   background: linear-gradient(120deg, rgba(122, 132, 92, 0.15) 0%, rgba(194, 184, 163, 0.15) 100%);
   padding: 2px 8px;
   border-radius: 4px;
+  white-space: nowrap;
 }
 
 .ci-list {
@@ -166,5 +168,13 @@
 
 .ci-detail-btn {
   margin-top: 30px;
-  display: inline-block;
+  background: var(--primary-color);
+  color: var(--light-color);
+  border-color: var(--primary-color);
+  float: right;
+}
+
+.ci-detail-btn:hover {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
 }

@@ -25,7 +25,11 @@
       "Bash(npm run dev:*)",
       "Bash(npm run sitemap:*)",
       "Bash(copy:*)",
-      "Read(//c/**)"
+      "Read(//c/**)",
+      "Bash(then echo \"=== $dir ===\")",
+      "Bash(taskkill:*)",
+      "Bash(for:*)",
+      "Bash(do echo \"=== $file ===\")"
     ],
     "deny": [],
     "ask": []

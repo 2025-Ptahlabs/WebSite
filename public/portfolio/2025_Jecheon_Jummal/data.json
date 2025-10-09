@@ -1,5 +1,5 @@
 {
-  "id": "2024_Jecheon_Jummal",
+  "id": "2025_Jecheon_Jummal",
   "title": "제천 점말동굴 전시",
   "tags": [
     "exhibition",
@@ -23,10 +23,10 @@
     "'역사터'와 '체험터'로 구성되어 있습니다. 역사터에서는 동굴의 발굴 과정, 신라 화랑의 각자(돌에 새긴 글자), 나말여초(신라 말기~고려 초기) 시기의 석조 유물 등을 영상과 모형으로 생생하게 소개합니다.",
     "체험터에서는 구석기인의 생활상을 직접 체험할 수 있는 인터랙티브 콘텐츠를 제공합니다. 동물 사냥 게임 등 몰입형 체험을 통해 선사시대 문화를 재미있게 학습할 수 있습니다."
   ],
-  "year": "2024",
-  "location": "제천, 대한민국",
+  "year": "2025",
+  "location": "충청북도, 제천",
   "country": "KR",
-  "lastmod": "2025-10-09",
+  "lastmod": "2025-10-10",
   "exhibits": [
     {
       "title": "안내 키오스크",
@@ -101,7 +101,11 @@
       ],
       "images": [
         "PhotoBooth.JPEG"
-      ]
+      ],
+      "relatedSolution": {
+        "id": "Solution_PhotoBooth",
+        "title": "포토부스 솔루션"
+      }
     }
   ],
 
@@ -109,7 +113,8 @@
     {
       "id": "Solution_PhotoBooth",
       "title": "포토부스 솔루션",
-      "description": "맞춤형 포토부스 솔루션 자세히 보기"
+      "description": "맞춤형 포토부스 솔루션 자세히 보기",
+      "thumbnail": "Title.png"
     }
   ]
 }

@@ -2,7 +2,7 @@
 
 **프로젝트명**: PTAHLABS 공식 웹사이트
 **개발 기간**: 2025년 1월
-**최종 업데이트**: 2025년 10월 9일 (Next.js 마이그레이션 & 섹션 기반 포맷 시스템)
+**최종 업데이트**: 2025년 10월 9일 (Next.js 마이그레이션 & 양방향 솔루션-전시 연결 시스템)
 **기술 스택**: Next.js, React, GitHub Pages
 
 ---
@@ -51,6 +51,8 @@ PTAHLABS는 미디어아트와 디지털 전시 솔루션 전문 기업의 공�
 - **GitHub Actions** (자동 배포)
 
 ### 주요 라이브러리
+- **React Three Fiber** - Hero 섹션 3D 인터랙티브 효과
+- **@react-three/drei** - 3D 컴포넌트 헬퍼
 - Font Awesome 6.4.0
 - Google Fonts (Inter, Pretendard)
 
@@ -98,12 +100,23 @@ WebSite/
 │   │   ├── sections/
 │   │   │   └── SectionRenderer.js  # 섹션 렌더러 컴포넌트
 │   │   ├── 1_Hero.js           # 메인 배너
+│   │   ├── HeroBaubleEffect.js # Hero 3D 인터랙티브 효과
 │   │   ├── 2_Portfolio.js      # 포트폴리오 섹션
 │   │   ├── 3_Solution.js       # 솔루션 섹션
 │   │   ├── 4_CI.js             # CI 소개 섹션
 │   │   ├── 5_Contact.js        # 연락처 섹션
 │   │   └── ProjectDetail.js    # 프로젝트 상세 페이지 컴포넌트
-│   └── App.css                 # 전체 스타일
+│   ├── styles/                 # CSS 모듈화
+│   │   ├── common.css          # 기본 스타일 및 변수
+│   │   ├── Header.css          # 헤더 스타일
+│   │   ├── Hero.css            # Hero 섹션 스타일
+│   │   ├── Portfolio.css       # 포트폴리오 스타일
+│   │   ├── ProjectDetail.css   # 프로젝트 상세 스타일
+│   │   ├── CI.css              # CI 섹션 스타일
+│   │   ├── Contact.css         # 연락처 스타일
+│   │   ├── Footer.css          # 푸터 스타일
+│   │   └── responsive.css      # 반응형 미디어 쿼리
+│   └── App.css                 # CSS 통합 (모든 스타일 import)
 ├── next.config.js              # Next.js 설정 (static export)
 ├── SEO_가이드.md               # SEO 최적화 가이드
 ├── CLAUDE.md                   # 이 문서
@@ -116,12 +129,20 @@ WebSite/
 
 ## ✨ 주요 기능
 
-### 1. 반응형 디자인
+### 1. 인터랙티브 Hero 섹션
+- **React Three Fiber 기반 3D 효과**
+- 55개의 3D 공들이 부유하는 애니메이션
+- **마우스 인터랙션**: 공들이 마우스를 따라옴
+- **클릭 인터랙션**: 클릭한 위치에서 공들이 퍼지는 폭발 효과
+- 충돌 감지 및 자연스러운 물리 효과
+- 스크롤 블렌딩 효과 (150-350px)
+
+### 2. 반응형 디자인
 - 모바일, 태블릿, 데스크톱 완벽 지원
 - 햄버거 메뉴 (모바일)
 - clamp() 함수로 유동적인 폰트 크기
 
-### 2. 동적 포트폴리오
+### 3. 동적 포트폴리오
 - **런타임 동적 로드**: 각 프로젝트의 data.json을 실시간으로 불러옴
 - **폴더 기반 관리**: 프로젝트별 독립 폴더 (`public/portfolio/프로젝트명/`)
 - **태그 시스템**: tags.json으로 중앙 관리, 한글명 자동 표시
@@ -129,7 +150,7 @@ WebSite/
 - 프로젝트 클릭 시 상세 페이지로 이동
 - 위치 정보 표시
 
-### 3. 섹션 기반 콘텐츠 시스템
+### 4. 섹션 기반 콘텐츠 시스템
 - **5가지 섹션 타입** 지원으로 자유로운 레이아웃 구성
   - `text`: 텍스트 섹션
   - `image-gallery`: 이미지 슬라이더 (좌우 네비게이션)
@@ -139,21 +160,21 @@ WebSite/
 - **SectionRenderer 컴포넌트**: 재사용 가능한 섹션 렌더링 로직
 - JSON 기반 콘텐츠 관리로 비개발자도 쉽게 편집 가능
 
-### 4. 라우팅
+### 5. 라우팅
 - **Next.js 파일 기반 라우팅** (정적 내보내기)
 - 메인 페이지: `/`
 - 솔루션 페이지: `/solution/`
 - 프로젝트 상세: `/project/[projectId]/`
 - SEO 친화적 URL (# 없음)
 
-### 5. SEO 최적화
+### 6. SEO 최적화
 - **Next.js SSG로 완전한 HTML 사전 렌더링**
 - 메타 태그 (description, keywords, Open Graph, Twitter Card)
 - Schema.org Structured Data (JSON-LD)
 - Sitemap.xml 자동 생성
 - robots.txt 설정
 
-### 6. 자동 배포
+### 7. 자동 배포
 - GitHub Actions를 통한 main 브랜치 자동 배포
 - 프로젝트 인덱스 빌드 시 자동 생성
 - Sitemap 빌드 시 자동 생성
@@ -307,6 +328,10 @@ npm run deploy
   - 예: `"interactive"` → 화면에 "인터랙티브"로 표시
   - 사용 가능한 태그: `interactive`, `media-art`, `kiosk`, `exhibition`, `history` 등
   - 새 태그 추가 시 `/public/portfolio/tags.json` 수정 필요
+- **`lastmod` 필드 필수**: 프로젝트를 수정할 때마다 `lastmod` 날짜를 업데이트해야 합니다
+  - 형식: `"YYYY-MM-DD"` (예: `"2025-10-09"`)
+  - 이 값은 sitemap.xml에 반영되어 검색 엔진이 최신 콘텐츠를 인식합니다
+  - **프로젝트 내용 수정 시 반드시 업데이트!**
 
 #### 3단계: 이미지 추가
 프로젝트 폴더에 이미지 파일 복사
@@ -440,7 +465,24 @@ git push origin main
 - 3D 공들이 마우스를 따라오도록 변경 (기존: 마우스를 피함)
 - 인터랙션 범위 증가 (10 → 15)
 - 끌어당기는 힘 증가 (0.5 → 0.8)
-- 클릭 시 공들이 퍼지는 효과 추가
+- 클릭 시 공들이 퍼지는 폭발 효과 추가
+- 폭발 범위: 25, 폭발력: 30, 3 프레임 지속
+- 폭발 시 충돌 감지 약화 (1.5 → 0.3)로 퍼짐 효과 개선
+- **CI 섹션 개선**
+- CI 로고 이미지 경로 수정 (상대 경로 → 절대 경로)
+- CI 타이틀과 로고 간격 조정 (margin-top: 60px, margin-bottom: 200px)
+- **양방향 솔루션-전시 연결 시스템 개선**
+- 솔루션 페이지: 하단에 "적용 사례" 섹션 표시 (관련 전시 카드)
+- 전시 페이지: 전시물 카드에 "솔루션 바로가기" 버튼 표시
+- ProjectDetail.js에서 `isSolution` 플래그로 조건부 렌더링
+- 적용 사례 썸네일을 실제 전시 이미지로 변경
+  - 비콘 도슨트 솔루션 → 원주 과학관의 BeaconDocent.jpg
+  - 포토부스 솔루션 → 제천 점말동굴의 PhotoBooth.JPEG
+- **솔루션 바로가기 버튼 UI/UX 개선**
+- 전시물 카드 하단에 전체 너비로 고정 배치 (margin-top: auto)
+- 카키색(#7A845C) 배경으로 일관된 디자인
+- 호버 시 위로 올라가는 효과 + 그림자 추가
+- 카드 콘텐츠를 flex column으로 변경하여 레이아웃 개선
 
 ### 2025-10-02 (오후)
 - **태그 시스템 중앙 관리**

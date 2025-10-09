@@ -28,22 +28,30 @@ const Header = () => {
       const fadeStart = 100;
       const fadeEnd = 300;
 
-      // 헤더 페이드 인/아웃
-      if (scrollY < fadeStart) {
-        // Hero 영역: 헤더 숨김
-        header.style.padding = '';
-        header.style.boxShadow = '';
-        header.style.opacity = '0';
-        header.style.transform = 'translateY(-20px)';
-      } else if (scrollY >= fadeStart && scrollY <= fadeEnd) {
-        // 전환 구간: 점진적으로 나타남
-        const progress = (scrollY - fadeStart) / (fadeEnd - fadeStart);
-        header.style.padding = '5px 0';
-        header.style.boxShadow = `0 5px 20px rgba(0, 0, 0, ${0.1 * progress})`;
-        header.style.opacity = progress.toString();
-        header.style.transform = `translateY(${-20 * (1 - progress)}px)`;
+      // 헤더 페이드 인/아웃 (메인 페이지에서만)
+      if (location.pathname === '/') {
+        if (scrollY < fadeStart) {
+          // Hero 영역: 헤더 숨김
+          header.style.padding = '';
+          header.style.boxShadow = '';
+          header.style.opacity = '0';
+          header.style.transform = 'translateY(-20px)';
+        } else if (scrollY >= fadeStart && scrollY <= fadeEnd) {
+          // 전환 구간: 점진적으로 나타남
+          const progress = (scrollY - fadeStart) / (fadeEnd - fadeStart);
+          header.style.padding = '5px 0';
+          header.style.boxShadow = `0 5px 20px rgba(0, 0, 0, ${0.1 * progress})`;
+          header.style.opacity = progress.toString();
+          header.style.transform = `translateY(${-20 * (1 - progress)}px)`;
+        } else {
+          // 완전히 표시
+          header.style.padding = '5px 0';
+          header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+          header.style.opacity = '1';
+          header.style.transform = 'translateY(0)';
+        }
       } else {
-        // 완전히 표시
+        // 다른 페이지에서는 항상 헤더 표시
         header.style.padding = '5px 0';
         header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
         header.style.opacity = '1';
@@ -77,7 +85,7 @@ const Header = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

@@ -18,8 +18,8 @@ const Solution = () => {
           const res = await fetch(`/portfolio/${id}/data.json`);
           const data = await res.json();
 
-          // solution 태그가 있는 프로젝트만 필터링
-          if (data.tags?.includes('solution')) {
+          // isSolution: true인 프로젝트만 필터링
+          if (data.isSolution === true) {
             return {
               ...data,
               images: data.images?.map(img => `/portfolio/${id}/${img}`) || [],
@@ -71,19 +71,21 @@ const Solution = () => {
 
   return (
     <div className="solution-page">
-      <div className="container" style={{ paddingTop: '120px', paddingBottom: '80px', minHeight: '100vh' }}>
+      <div className="container" style={{ paddingTop: '200px', paddingBottom: '80px', minHeight: '100vh' }}>
         <h2 className="section-title">솔루션</h2>
-        <p className="section-description">
-          전시관을 위한 맞춤형 디지털 솔루션을 제공합니다
-        </p>
+        <div className="solution-intro">
+          <h3 className="solution-subtitle">즉시 도입 가능한 디지털 솔루션 제품</h3>
+          <p className="solution-description">
+            PTAHLABS는 전시관, 박물관, 체험관을 위한 검증된 <span className="highlight">솔루션 제품</span>을 제공합니다.<br />
+            각 솔루션은 커스터마이징 옵션을 포함하고 있어 귀사의 환경에 맞게 조정할 수 있습니다.
+          </p>
+        </div>
 
         <div className="portfolio-grid">
           {solutionProjects.map((item) => (
             <div
               key={item.id}
-              className="portfolio-item"
-              onClick={() => handleProjectClick(item.link)}
-              style={{ cursor: 'pointer' }}
+              className="portfolio-item solution-card"
             >
               <img
                 src={item.thumbnail}
@@ -92,6 +94,13 @@ const Solution = () => {
               />
               <div className="portfolio-overlay">
                 <h3 className="portfolio-title">{item.title}</h3>
+                <p className="solution-description-short">{item.description}</p>
+                <button
+                  className="solution-detail-btn"
+                  onClick={() => handleProjectClick(item.link)}
+                >
+                  솔루션 자세히 보기 →
+                </button>
               </div>
             </div>
           ))}

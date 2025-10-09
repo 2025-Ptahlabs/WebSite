@@ -200,10 +200,15 @@ const Portfolio = () => {
               />
               <div className="portfolio-overlay">
                 <h3 className="portfolio-title">{item.title}</h3>
-                <div className="portfolio-tags">
-                  {item.tags.filter(tag => tag !== 'solution').map(tag => (
-                    <span key={tag} className="portfolio-tag">#{getTagLabel(tag)}</span>
-                  ))}
+                <div className="portfolio-meta">
+                  <div className="portfolio-tags">
+                    {item.tags.filter(tag => tag !== 'solution').map(tag => (
+                      <span key={tag} className="portfolio-tag">#{getTagLabel(tag)}</span>
+                    ))}
+                  </div>
+                  {item.year && (
+                    <div className="portfolio-year">{item.year}</div>
+                  )}
                 </div>
               </div>
             </div>

@@ -150,6 +150,27 @@ _TEMPLATE 폴더 전체를 복사 → 붙여넣기
 // "exhibits" 항목 전체 삭제
 ```
 
+#### 전시물에 솔루션 연결하기
+
+전시물에 관련 솔루션 페이지를 연결하려면 `relatedSolution` 추가:
+
+```json
+"exhibits": [
+  {
+    "title": "비콘 도슨트 시스템",
+    "description": "전시물에 가까이 다가가면 자동으로 설명이 재생되는 시스템",
+    "tags": ["beacon", "docent"],
+    "images": ["beacon1.jpg"],
+    "relatedSolution": {
+      "id": "Solution_BeaconDocent",
+      "title": "비콘 도슨트 솔루션"
+    }
+  }
+]
+```
+
+전시물 카드 하단에 "비콘 도슨트 솔루션 자세히 보기" 버튼이 표시됩니다.
+
 ---
 
 ## 완료 후 확인사항

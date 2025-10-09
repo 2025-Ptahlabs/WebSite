@@ -7,7 +7,7 @@
   "description": "짧은 설명 (포트폴리오 카드에 표시)",
   "year": "2025",
   "client": "클라이언트명",
-  "location": "도시, 대한민국",
+  "location": "도, 도시",
   "country": "KR",
   "lastmod": "2025-10-01",
 
@@ -54,7 +54,12 @@
           "title": "전시물 1",
           "description": "전시물 설명",
           "images": ["exhibit1.jpg", "exhibit2.jpg"],
-          "tags": ["interactive", "media-art"]
+          "tags": ["interactive", "media-art"],
+          "relatedSolution": {
+            "_comment": "(선택사항) 전시 프로젝트에서 사용. 해당 전시물과 관련된 솔루션 페이지로 연결하는 버튼을 표시합니다.",
+            "id": "Solution_BeaconDocent",
+            "title": "비콘 도슨트 솔루션"
+          }
         }
       ]
     }

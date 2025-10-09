@@ -18,7 +18,8 @@ const SectionRenderer = ({
   setGalleryIndexes,
   exhibitImageIndexes,
   setExhibitImageIndexes,
-  getTagLabel
+  getTagLabel,
+  router
 }) => {
 
   switch (section.type) {
@@ -153,6 +154,14 @@ const SectionRenderer = ({
                           <span key={tag} className="exhibit-tag">#{getTagLabel(tag)}</span>
                         ))}
                       </div>
+                    )}
+                    {exhibit.relatedSolution && router && (
+                      <button
+                        className="btn exhibit-solution-btn"
+                        onClick={() => router.push(`/project/${exhibit.relatedSolution.id}`)}
+                      >
+                        {exhibit.relatedSolution.title} 자세히 보기
+                      </button>
                     )}
                   </div>
                 </div>

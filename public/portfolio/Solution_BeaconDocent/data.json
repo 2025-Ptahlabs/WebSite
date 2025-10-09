@@ -5,15 +5,13 @@
   "images": ["Title.jpg", "Exhibit.jpg", "Language.jpg", "List_1.jpg", "List_2.jpg"],
   "thumbnail": "Title.jpg",
   "description": "비콘 기술을 활용한 스마트 전시 안내 시스템",
-  "year": "2024",
-  "location": "전국",
-  "country": "KR",
-  "lastmod": "2025-10-09",
+  "year": "2025",
+  "lastmod": "2025-10-10",
+  "isSolution": true,
 
   "sections": [
     {
       "type": "text",
-      "title": "비콘 도슨트 솔루션",
       "content": "비콘(Bluetooth Beacon) 기술을 활용하여, 전시물에 가까워지면 자동으로 음성 및 영상 해설을 제공하는 도슨트 솔루션입니다. 박물관, 미술관, 전시장, 관광지, 팝업스토어 등 도슨트 안내가 필요한 모든 공간에 적용 가능합니다."
     },
     {
@@ -36,7 +34,11 @@
           "title": "편리한 전시물 관리",
           "description": "기존 오디오 가이드 대여의 번거로움을 없애고, 관람객 본인의 스마트폰으로 동영상, 이미지, 텍스트 등 다양한 콘텐츠를 편리하게 이용할 수 있습니다.\n\n반응형 디자인으로 다양한 스마트 기기에 최적화된 UX를 제공하며, 직관적인 인터페이스로 누구나 쉽게 사용할 수 있습니다.",
           "tags": ["mobile", "docent"],
-          "images": ["List_1.jpg", "List_2.jpg"]
+          "images": ["List_1.jpg", "List_2.jpg"],
+          "relatedProject": {
+            "id": "2025_Wonju_ScienceMuseum",
+            "title": "원주 과학관"
+          }
         }
       ]
     }
@@ -44,9 +46,10 @@
 
   "relatedProjects": [
     {
-      "id": "2024_Wonju_ScienceMuseum",
+      "id": "2025_Wonju_ScienceMuseum",
       "title": "원주 과학관",
-      "description": "비콘 도슨트 솔루션 적용 사례"
+      "description": "비콘 도슨트 솔루션 적용 사례",
+      "thumbnail": "BeaconDocent.jpg"
     }
   ]
 }

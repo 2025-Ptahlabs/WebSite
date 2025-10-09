@@ -20,6 +20,15 @@ function HomePage() {
   );
 }
 
+function CIPage() {
+  return (
+    <>
+      <CI />
+      <Contact />
+    </>
+  );
+}
+
 function App() {
   return (
     <div className="App">
@@ -27,6 +36,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/solution" element={<Solution />} />
+        <Route path="/ci" element={<CIPage />} />
         <Route path="/project/:projectId" element={<ProjectDetail />} />
       </Routes>
       <Footer />

@@ -1,5 +1,5 @@
 {
-  "id": "2024_Wonju_ScienceMuseum",
+  "id": "2025_Wonju_ScienceMuseum",
   "title": "원주 과학관",
   "tags": [
     "exhibition",
@@ -14,10 +14,10 @@
     "원주 의료 과학관은 최신 의료 기술과 건강 정보를 체험할 수 있는 인터랙티브 전시 공간입니다.",
     "슬라이딩 비전 기술을 활용하여 복잡한 의학 정보를 직관적으로 이해할 수 있으며, 게임형 시뮬레이션을 통해 재미있게 건강과 질병에 대해 학습할 수 있습니다."
   ],
-  "year": "2024",
-  "location": "원주, 대한민국",
+  "year": "2025",
+  "location": "강원도, 원주",
   "country": "KR",
-  "lastmod": "2025-10-09",
+  "lastmod": "2025-10-10",
   "exhibits": [
     {
       "title": "비콘 도슨트 시스템",
@@ -28,7 +28,11 @@
         "mobile",
         "IoT"
       ],
-      "images": ["BeaconDocent.jpg"]
+      "images": ["BeaconDocent.jpg"],
+      "relatedSolution": {
+        "id": "Solution_BeaconDocent",
+        "title": "비콘 도슨트 솔루션"
+      }
     },
     {
       "title": "암진단 슬라이딩 비전",
@@ -69,7 +73,8 @@
     {
       "id": "Solution_BeaconDocent",
       "title": "비콘 도슨트 솔루션",
-      "description": "솔루션 자세히 보기"
+      "description": "솔루션 자세히 보기",
+      "thumbnail": "Title.jpg"
     }
   ]
 }

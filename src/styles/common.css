@@ -38,6 +38,8 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
   scroll-snap-type: y proximity;
+  word-break: keep-all;
+  word-wrap: break-word;
 }
 
 .App {

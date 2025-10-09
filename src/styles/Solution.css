@@ -1,0 +1,71 @@
+/* Solution 페이지 */
+.solution-page {
+  min-height: 100vh;
+  background: var(--light-color);
+}
+
+.solution-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 80px auto;
+  padding: 0 20px;
+}
+
+.solution-subtitle {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.solution-description {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+.solution-description .highlight {
+  font-weight: 700;
+  color: var(--primary-color);
+  background: linear-gradient(120deg, rgba(122, 132, 92, 0.15) 0%, rgba(194, 184, 163, 0.15) 100%);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* 솔루션 카드 스타일 */
+.solution-card .portfolio-overlay {
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.solution-description-short {
+  font-size: 1rem;
+  margin: 15px 0 20px 0;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.solution-detail-btn {
+  padding: 12px 24px;
+  background: var(--accent-color);
+  color: var(--light-color);
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.solution-detail-btn:hover {
+  background: var(--primary-color);
+  transform: translateX(5px);
+}

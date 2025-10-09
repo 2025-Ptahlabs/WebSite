@@ -135,10 +135,12 @@ const ProjectDetail = () => {
             <span className="project-meta-item">
               <strong>년도:</strong> {project.year}
             </span>
-            <span className="project-meta-item">
-              <strong>위치:</strong> {project.location}
-            </span>
-            <div className="project-detail-tags">
+            {project.location && (
+              <span className="project-meta-item">
+                <strong>위치:</strong> {project.location}
+              </span>
+            )}
+            <div className={`project-detail-tags ${project.tags.filter(tag => tag !== 'solution').length > 6 ? 'tags-wrap' : ''}`}>
               {project.tags.filter(tag => tag !== 'solution').map(tag => (
                 <span key={tag} className="project-detail-tag">#{getTagLabel(tag)}</span>
               ))}
@@ -165,12 +167,13 @@ const ProjectDetail = () => {
                     exhibitImageIndexes={exhibitImageIndexes}
                     setExhibitImageIndexes={setExhibitImageIndexes}
                     getTagLabel={getTagLabel}
+                    router={router}
                   />
                 ))}
               </div>
 
-              {/* 관련 프로젝트 */}
-              {project.relatedProjects && project.relatedProjects.length > 0 && (
+              {/* 관련 프로젝트 (솔루션인 경우에만 표시) */}
+              {project.isSolution && project.relatedProjects && project.relatedProjects.length > 0 && (
                 <div className="related-projects">
                   <h3>적용 사례</h3>
                   <div className="related-projects-grid">
@@ -180,9 +183,13 @@ const ProjectDetail = () => {
                         className="related-project-btn"
                         onClick={() => router.push(`/project/${relatedProject.id}`)}
                       >
+                        <div className="related-project-image">
+                          <img
+                            src={`/portfolio/${relatedProject.id}/${relatedProject.thumbnail || 'thumbnail.jpg'}`}
+                            alt={relatedProject.title}
+                          />
+                        </div>
                         <h4>{relatedProject.title}</h4>
-                        <p>{relatedProject.description}</p>
-                        <span className="arrow">→</span>
                       </button>
                     ))}
                   </div>
@@ -278,6 +285,14 @@ const ProjectDetail = () => {
                                 ))}
                               </div>
                             )}
+                            {exhibit.relatedSolution && (
+                              <button
+                                className="btn exhibit-solution-btn"
+                                onClick={() => router.push(`/project/${exhibit.relatedSolution.id}`)}
+                              >
+                                {exhibit.relatedSolution.title} 자세히 보기
+                              </button>
+                            )}
                           </div>
                         </div>
                       );
@@ -286,8 +301,8 @@ const ProjectDetail = () => {
                 </div>
               )}
 
-              {/* 관련 프로젝트 */}
-              {project.relatedProjects && project.relatedProjects.length > 0 && (
+              {/* 관련 프로젝트 (솔루션인 경우에만 표시) */}
+              {project.isSolution && project.relatedProjects && project.relatedProjects.length > 0 && (
                 <div className="related-projects">
                   <h3>적용 사례</h3>
                   <div className="related-projects-grid">
@@ -297,9 +312,13 @@ const ProjectDetail = () => {
                         className="related-project-btn"
                         onClick={() => router.push(`/project/${relatedProject.id}`)}
                       >
+                        <div className="related-project-image">
+                          <img
+                            src={`/portfolio/${relatedProject.id}/${relatedProject.thumbnail || 'thumbnail.jpg'}`}
+                            alt={relatedProject.title}
+                          />
+                        </div>
                         <h4>{relatedProject.title}</h4>
-                        <p>{relatedProject.description}</p>
-                        <span className="arrow">→</span>
                       </button>
                     ))}
                   </div>
