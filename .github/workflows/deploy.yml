@@ -1,40 +1,52 @@
-name: Deploy to GitHub Pages  # 워크플로우 이름
+name: Deploy to GitHub Pages
 
-on:                                 # 언제 이 워크플로우를 실행할지 설정
-  push:                             # git push할 때
-    branches: [ main ]              # main 브랜치에 푸시할 때만 실행
+on:
+  push:
+    branches: [ main ]
 
-permissions:                        # GitHub Actions bot 권한 설정
-  contents: write                   # 저장소에 쓰기 권한 부여
-  pages: write                      # GitHub Pages에 쓰기 권한 부여
-  id-token: write                   # OIDC 토큰 발급 권한
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-concurrency:                        # 동시 실행 제어
-  group: pages                      # 'pages' 그룹으로 묶음
-  cancel-in-progress: false         # 진행 중인 작업은 취소하지 않고 대기
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
-jobs:                               # 실행할 작업들 정의
-  build-and-deploy:                 # job 이름
-    runs-on: ubuntu-latest          # Ubuntu 최신 버전 가상머신에서 실행
-    
-    steps:                          # 순서대로 실행할 단계들
-    - name: Checkout                # 1단계: 코드 가져오기
-      uses: actions/checkout@v3     # GitHub 코드를 가상머신으로 다운로드
-
-    - name: Setup Node.js           # 2단계: Node.js 환경 설정
-      uses: actions/setup-node@v3   # Node.js 설치 액션 사용
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        node-version: '18'          # Node.js 18 버전 사용
-        cache: 'npm'                # npm 패키지 캐싱으로 속도 향상
-
-    - name: Install                 # 3단계: 의존성 설치
-      run: npm install              # package.json의 패키지들 설치
-
-    - name: Build                   # 4단계: 프로젝트 빌드
-      run: npm run build            # Next.js 앱을 빌드해서 out/ 폴더에 생성
-
-    - name: Deploy                  # 5단계: GitHub Pages에 배포
-      uses: peaceiris/actions-gh-pages@v3           # GitHub Pages 배포 전용 액션
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm install
+      
+    - name: Build
+      run: npm run build
+      
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}   # GitHub 인증 토큰
-        publish_dir: ./out                          # 배포할 폴더 (빌드 결과물)
+        path: ./out
+        
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
