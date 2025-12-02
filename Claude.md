@@ -2,7 +2,7 @@
 
 **프로젝트명**: PTAHLABS 공식 웹사이트
 **개발 기간**: 2025년 1월
-**최종 업데이트**: 2025년 10월 9일 (Next.js 마이그레이션 & 양방향 솔루션-전시 연결 시스템)
+**최종 업데이트**: 2025년 12월 3일 (포트폴리오/솔루션 카드 UI 개선 & 비디오 썸네일 지원)
 **기술 스택**: Next.js, React, GitHub Pages
 
 ---
@@ -70,6 +70,7 @@ WebSite/
 │   ├── _document.js            # HTML 문서 구조
 │   ├── index.js                # 메인 페이지
 │   ├── solution.js             # 솔루션 페이지
+│   ├── history.js              # 연혁 페이지 (메뉴 미노출, noindex)
 │   └── project/
 │       └── [projectId].js      # 동적 프로젝트 상세 페이지
 ├── public/
@@ -105,6 +106,7 @@ WebSite/
 │   │   ├── 3_Solution.js       # 솔루션 섹션
 │   │   ├── 4_CI.js             # CI 소개 섹션
 │   │   ├── 5_Contact.js        # 연락처 섹션
+│   │   ├── 6_History.js        # 회사 연혁 (메뉴 미노출)
 │   │   └── ProjectDetail.js    # 프로젝트 상세 페이지 컴포넌트
 │   ├── styles/                 # CSS 모듈화
 │   │   ├── common.css          # 기본 스타일 및 변수
@@ -113,6 +115,7 @@ WebSite/
 │   │   ├── Portfolio.css       # 포트폴리오 스타일
 │   │   ├── ProjectDetail.css   # 프로젝트 상세 스타일
 │   │   ├── CI.css              # CI 섹션 스타일
+│   │   ├── History.css         # 연혁 스타일
 │   │   ├── Contact.css         # 연락처 스타일
 │   │   ├── Footer.css          # 푸터 스타일
 │   │   └── responsive.css      # 반응형 미디어 쿼리
@@ -146,9 +149,12 @@ WebSite/
 - **런타임 동적 로드**: 각 프로젝트의 data.json을 실시간으로 불러옴
 - **폴더 기반 관리**: 프로젝트별 독립 폴더 (`public/portfolio/프로젝트명/`)
 - **태그 시스템**: tags.json으로 중앙 관리, 한글명 자동 표시
+- **카드 UI**: 이미지 + 제목/연도가 분리된 카드 형식
+- **호버 오버레이**: 마우스 오버 시 태그 표시
+- **비디오 썸네일 지원**: mp4, webm, ogg, mov 형식 자동 재생
 - 태그 기반 필터링 (인터랙티브, 전시, 역사 등)
 - 프로젝트 클릭 시 상세 페이지로 이동
-- 위치 정보 표시
+- 썸네일 없는 경우 제목 텍스트로 플레이스홀더 표시
 
 ### 4. 섹션 기반 콘텐츠 시스템
 - **5가지 섹션 타입** 지원으로 자유로운 레이아웃 구성
@@ -165,6 +171,7 @@ WebSite/
 - 메인 페이지: `/`
 - 솔루션 페이지: `/solution/`
 - 프로젝트 상세: `/project/[projectId]/`
+- 연혁 페이지: `/history/` (메뉴 미노출, noindex)
 - SEO 친화적 URL (# 없음)
 
 ### 6. SEO 최적화
@@ -333,8 +340,10 @@ npm run deploy
   - 이 값은 sitemap.xml에 반영되어 검색 엔진이 최신 콘텐츠를 인식합니다
   - **프로젝트 내용 수정 시 반드시 업데이트!**
 
-#### 3단계: 이미지 추가
-프로젝트 폴더에 이미지 파일 복사
+#### 3단계: 미디어 추가
+프로젝트 폴더에 이미지/비디오 파일 복사
+- **이미지**: jpg, png, webp 등
+- **비디오 썸네일**: mp4, webm, ogg, mov (자동 재생, 음소거, 루프)
 
 #### 4단계: 빌드 및 배포
 ```bash
@@ -428,6 +437,32 @@ git push origin main
 ---
 
 ## 📝 변경 이력
+
+### 2025-12-03
+- **package.json 정리**
+- 불필요한 의존성 제거: react-router-dom, react-scripts, @testing-library/*, cra-template, web-vitals
+- eslintConfig, browserslist 설정 제거
+- 패키지 수 약 1000개 → 139개로 감소
+- **연혁 페이지 추가**
+- pages/history.js, src/components/6_History.js, src/styles/History.css 생성
+- 2025년 회사 연혁 타임라인 표시
+- 메뉴에는 미노출, robots noindex 설정
+- **정보 키오스크 솔루션 추가**
+- public/portfolio/Solution_InfoKiosk/data.json 생성
+- 엑셀 기반 데이터 관리, 키워드 검색, 커스터마이징 가능
+- 부산 민주공원 민주주의기록관과 연결
+- **부산 민주공원 민주주의기록관 콘텐츠 추가**
+- 8개 전시물 상세 정보 추가 (디지털 멀티비전, 유월길 열기를 따라, 6월 우리들의 이야기 등)
+- hidden: false로 변경하여 포트폴리오에 표시
+- **포트폴리오/솔루션 카드 UI 전면 개편**
+- 호버 오버레이 방식 → 카드 형식 (이미지 + 제목/연도 분리)
+- 포트폴리오: 호버 시 태그 오버레이 표시
+- 솔루션: 이미지 + 제목 + 설명 + 링크 카드 형식
+- 썸네일 없는 경우 제목 전체 텍스트로 플레이스홀더 표시
+- **비디오 썸네일 지원**
+- mp4, webm, ogg, mov 확장자 자동 인식
+- 자동 재생 (muted, loop, playsInline, autoPlay)
+- 포트폴리오/솔루션 모두 적용
 
 ### 2025-10-09
 - **Next.js 마이그레이션 완료**
@@ -534,4 +569,4 @@ git push origin main
 ---
 
 **이 문서는 Claude AI가 작성했습니다.**
-**최종 검토**: 2025년 10월 9일
+**최종 검토**: 2025년 12월 3일
