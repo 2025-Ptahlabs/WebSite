@@ -123,6 +123,13 @@ const Portfolio = () => {
     router.push(link);
   };
 
+  // 파일이 비디오인지 확인
+  const isVideo = (filename) => {
+    if (!filename) return false;
+    const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov'];
+    return videoExtensions.some(ext => filename.toLowerCase().endsWith(ext));
+  };
+
   const filteredItems = activeFilter === 'all'
     ? projectsData
     : projectsData.filter(project => project.tags?.includes(activeFilter));
@@ -189,27 +196,40 @@ const Portfolio = () => {
           {filteredItems.map((item, index) => (
             <div
               key={item.id}
-              className="portfolio-item"
+              className="portfolio-card"
               onClick={() => handleProjectClick(item.link)}
-              style={{ cursor: 'pointer' }}
             >
-              <img
-                src={item.thumbnail}
-                alt={item.title}
-                className="portfolio-image"
-              />
-              <div className="portfolio-overlay">
-                <h3 className="portfolio-title">{item.title}</h3>
-                <div className="portfolio-meta">
-                  <div className="portfolio-tags">
+              <div className="portfolio-card-image">
+                {item.thumbnail ? (
+                  isVideo(item.thumbnail) ? (
+                    <video
+                      src={item.thumbnail}
+                      muted
+                      loop
+                      playsInline
+                      autoPlay
+                    />
+                  ) : (
+                    <img src={item.thumbnail} alt={item.title} />
+                  )
+                ) : (
+                  <div className="portfolio-card-placeholder">
+                    <span>{item.title}</span>
+                  </div>
+                )}
+                <div className="portfolio-card-overlay">
+                  <div className="portfolio-card-tags">
                     {item.tags.filter(tag => tag !== 'solution').map(tag => (
-                      <span key={tag} className="portfolio-tag">#{getTagLabel(tag)}</span>
+                      <span key={tag} className="portfolio-card-tag">#{getTagLabel(tag)}</span>
                     ))}
                   </div>
-                  {item.year && (
-                    <div className="portfolio-year">{item.year}</div>
-                  )}
                 </div>
+              </div>
+              <div className="portfolio-card-content">
+                <h3 className="portfolio-card-title">{item.title}</h3>
+                {item.year && (
+                  <span className="portfolio-card-year">{item.year}</span>
+                )}
               </div>
             </div>
           ))}

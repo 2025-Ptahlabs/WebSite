@@ -163,8 +163,21 @@
     gap: 25px;
   }
 
-  .portfolio-item {
-    border-radius: 15px;
+  .portfolio-card {
+    border-radius: 12px;
+  }
+
+  .portfolio-card-content {
+    padding: 16px;
+  }
+
+  .portfolio-card-title {
+    font-size: 1.1rem;
+  }
+
+  .portfolio-card-tag {
+    font-size: 0.75rem;
+    padding: 3px 8px;
   }
 
   .ci-section-block {

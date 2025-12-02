@@ -33,39 +33,109 @@
   border-radius: 4px;
 }
 
-/* 솔루션 카드 스타일 */
-.solution-card .portfolio-overlay {
-  opacity: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
+/* 솔루션 그리드 */
+.solution-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
 }
 
-.solution-description-short {
-  font-size: 1rem;
-  margin: 15px 0 20px 0;
-  opacity: 0.9;
-  line-height: 1.6;
-}
-
-.solution-detail-btn {
-  padding: 12px 24px;
-  background: var(--accent-color);
-  color: var(--light-color);
-  border: none;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
+/* 솔루션 카드 - 이미지 + 텍스트 카드 형식 */
+.solution-card {
+  background: var(--light-color);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
   transition: var(--transition);
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+  cursor: pointer;
+  border: 1px solid var(--secondary-color);
 }
 
-.solution-detail-btn:hover {
-  background: var(--primary-color);
-  transform: translateX(5px);
+.solution-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-color);
+}
+
+.solution-card-image {
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+}
+
+.solution-card-image img,
+.solution-card-image video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.solution-card:hover .solution-card-image img,
+.solution-card:hover .solution-card-image video {
+  transform: scale(1.05);
+}
+
+/* 썸네일 없을 때 플레이스홀더 */
+.solution-card-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+}
+
+.solution-card-placeholder span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  padding: 20px;
+  line-height: 1.4;
+}
+
+.solution-card-content {
+  padding: 24px;
+}
+
+.solution-card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+}
+
+.solution-card-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 16px;
+}
+
+.solution-card-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  transition: var(--transition);
+}
+
+.solution-card:hover .solution-card-link {
+  color: var(--primary-color);
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .solution-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .solution-card-content {
+    padding: 20px;
+  }
+
+  .solution-card-title {
+    font-size: 1.2rem;
+  }
 }

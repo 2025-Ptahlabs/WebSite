@@ -58,6 +58,13 @@ const Solution = () => {
     router.push(link);
   };
 
+  // 파일이 비디오인지 확인
+  const isVideo = (filename) => {
+    if (!filename) return false;
+    const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov'];
+    return videoExtensions.some(ext => filename.toLowerCase().endsWith(ext));
+  };
+
   if (loading) {
     return (
       <div className="solution-page">
@@ -81,26 +88,36 @@ const Solution = () => {
           </p>
         </div>
 
-        <div className="portfolio-grid">
+        <div className="solution-grid">
           {solutionProjects.map((item) => (
             <div
               key={item.id}
-              className="portfolio-item solution-card"
+              className="solution-card"
+              onClick={() => handleProjectClick(item.link)}
             >
-              <img
-                src={item.thumbnail}
-                alt={item.title}
-                className="portfolio-image"
-              />
-              <div className="portfolio-overlay">
-                <h3 className="portfolio-title">{item.title}</h3>
-                <p className="solution-description-short">{item.description}</p>
-                <button
-                  className="solution-detail-btn"
-                  onClick={() => handleProjectClick(item.link)}
-                >
-                  솔루션 자세히 보기 →
-                </button>
+              <div className="solution-card-image">
+                {item.thumbnail ? (
+                  isVideo(item.thumbnail) ? (
+                    <video
+                      src={item.thumbnail}
+                      muted
+                      loop
+                      playsInline
+                      autoPlay
+                    />
+                  ) : (
+                    <img src={item.thumbnail} alt={item.title} />
+                  )
+                ) : (
+                  <div className="solution-card-placeholder">
+                    <span>{item.title}</span>
+                  </div>
+                )}
+              </div>
+              <div className="solution-card-content">
+                <h3 className="solution-card-title">{item.title}</h3>
+                <p className="solution-card-description">{item.description}</p>
+                <span className="solution-card-link">자세히 보기 →</span>
               </div>
             </div>
           ))}
