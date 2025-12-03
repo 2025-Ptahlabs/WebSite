@@ -2,7 +2,7 @@
 
 **프로젝트명**: PTAHLABS 공식 웹사이트
 **개발 기간**: 2025년 1월
-**최종 업데이트**: 2025년 12월 3일 (포트폴리오/솔루션 카드 UI 개선 & 비디오 썸네일 지원)
+**최종 업데이트**: 2025년 12월 4일 (휴식정원 프로젝트 추가 & 섹션 줄바꿈 지원)
 **기술 스택**: Next.js, React, GitHub Pages
 
 ---
@@ -345,9 +345,16 @@ npm run deploy
 - **이미지**: jpg, png, webp 등
 - **비디오 썸네일**: mp4, webm, ogg, mov (자동 재생, 음소거, 루프)
 
-#### 4단계: 빌드 및 배포
+#### 4단계: 인덱스 생성 (필수!)
+새 프로젝트 추가 후 **반드시** 인덱스를 재생성해야 포트폴리오에 표시됩니다:
 ```bash
-npm run build           # 빌드 (index.json 자동 생성)
+node scripts/generate-index.js   # 개발 중 수동 실행
+# 또는
+npm run build                    # 빌드 시 자동 생성
+```
+
+#### 5단계: 배포
+```bash
 git add .
 git commit -m "새 프로젝트 추가: 프로젝트명"
 git push origin main
@@ -438,31 +445,43 @@ git push origin main
 
 ## 📝 변경 이력
 
+### 2025-12-04
+- **휴식정원 프로젝트 추가**
+  - public/portfolio/2025_MindGarden/data.json 생성
+  - 공모전 기획안 (멘탈 웰니스 앱 컨셉)
+  - sections 형식으로 기획 의도, 핵심 기능 설계, 기술 스택, 프로토타입 섹션 구성
+- **섹션 텍스트 줄바꿈 지원**
+  - `.section-text p`에 `white-space: pre-line` 추가
+  - data.json에서 `\n`으로 줄바꿈 가능
+- **포트폴리오 제목 줄바꿈**
+  - ` / ` 구분자로 긴 제목 줄바꿈 처리
+  - 예: "부산 민주공원 / 민주주의기록관", "휴식정원 / Mind Garden Diary"
+
 ### 2025-12-03
 - **package.json 정리**
-- 불필요한 의존성 제거: react-router-dom, react-scripts, @testing-library/*, cra-template, web-vitals
-- eslintConfig, browserslist 설정 제거
-- 패키지 수 약 1000개 → 139개로 감소
+  - 불필요한 의존성 제거: react-router-dom, react-scripts, @testing-library/*, cra-template, web-vitals
+  - eslintConfig, browserslist 설정 제거
+  - 패키지 수 약 1000개 → 139개로 감소
 - **연혁 페이지 추가**
-- pages/history.js, src/components/6_History.js, src/styles/History.css 생성
-- 2025년 회사 연혁 타임라인 표시
-- 메뉴에는 미노출, robots noindex 설정
+  - pages/history.js, src/components/6_History.js, src/styles/History.css 생성
+  - 2025년 회사 연혁 타임라인 표시
+  - 메뉴에는 미노출, robots noindex 설정
 - **정보 키오스크 솔루션 추가**
-- public/portfolio/Solution_InfoKiosk/data.json 생성
-- 엑셀 기반 데이터 관리, 키워드 검색, 커스터마이징 가능
-- 부산 민주공원 민주주의기록관과 연결
+  - public/portfolio/Solution_InfoKiosk/data.json 생성
+  - 엑셀 기반 데이터 관리, 키워드 검색, 커스터마이징 가능
+  - 부산 민주공원 민주주의기록관과 연결
 - **부산 민주공원 민주주의기록관 콘텐츠 추가**
-- 8개 전시물 상세 정보 추가 (디지털 멀티비전, 유월길 열기를 따라, 6월 우리들의 이야기 등)
-- hidden: false로 변경하여 포트폴리오에 표시
+  - 8개 전시물 상세 정보 추가 (디지털 멀티비전, 유월길 열기를 따라, 6월 우리들의 이야기 등)
+  - hidden: false로 변경하여 포트폴리오에 표시
 - **포트폴리오/솔루션 카드 UI 전면 개편**
-- 호버 오버레이 방식 → 카드 형식 (이미지 + 제목/연도 분리)
-- 포트폴리오: 호버 시 태그 오버레이 표시
-- 솔루션: 이미지 + 제목 + 설명 + 링크 카드 형식
-- 썸네일 없는 경우 제목 전체 텍스트로 플레이스홀더 표시
+  - 호버 오버레이 방식 → 카드 형식 (이미지 + 제목/연도 분리)
+  - 포트폴리오: 호버 시 태그 오버레이 표시
+  - 솔루션: 이미지 + 제목 + 설명 + 링크 카드 형식
+  - 썸네일 없는 경우 제목 전체 텍스트로 플레이스홀더 표시
 - **비디오 썸네일 지원**
-- mp4, webm, ogg, mov 확장자 자동 인식
-- 자동 재생 (muted, loop, playsInline, autoPlay)
-- 포트폴리오/솔루션 모두 적용
+  - mp4, webm, ogg, mov 확장자 자동 인식
+  - 자동 재생 (muted, loop, playsInline, autoPlay)
+  - 포트폴리오/솔루션 모두 적용
 
 ### 2025-10-09
 - **Next.js 마이그레이션 완료**
@@ -569,4 +588,4 @@ git push origin main
 ---
 
 **이 문서는 Claude AI가 작성했습니다.**
-**최종 검토**: 2025년 12월 3일
+**최종 검토**: 2025년 12월 4일

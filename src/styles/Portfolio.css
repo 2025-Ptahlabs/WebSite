@@ -207,6 +207,7 @@
   font-weight: 700;
   color: var(--primary-color);
   margin-bottom: 12px;
+  word-break: keep-all;
 }
 
 .portfolio-card-meta {

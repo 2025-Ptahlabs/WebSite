@@ -214,7 +214,7 @@ const Portfolio = () => {
                   )
                 ) : (
                   <div className="portfolio-card-placeholder">
-                    <span>{item.title}</span>
+                    <span dangerouslySetInnerHTML={{ __html: item.title.replace(' / ', '<br/>') }} />
                   </div>
                 )}
                 <div className="portfolio-card-overlay">
@@ -226,7 +226,7 @@ const Portfolio = () => {
                 </div>
               </div>
               <div className="portfolio-card-content">
-                <h3 className="portfolio-card-title">{item.title}</h3>
+                <h3 className="portfolio-card-title" dangerouslySetInnerHTML={{ __html: item.title.replace(' / ', '<br/>') }} />
                 {item.year && (
                   <span className="portfolio-card-year">{item.year}</span>
                 )}
